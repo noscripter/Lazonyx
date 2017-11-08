@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://textures/bg_v1.png" type="Texture" id=1]
-[ext_resource path="res://prefabs/coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=1]
+[ext_resource path="res://prefabs/orb.tscn" type="PackedScene" id=2]
 [ext_resource path="res://prefabs/see_saw.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=5]
@@ -190,5 +190,8 @@ _update_shape_index = 0
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 169.67, 69.4923 )
+move_speed = Vector2( 150, 0 )
+max_horizontal_speed = 200
+max_vertical_speed = 450
 
 
