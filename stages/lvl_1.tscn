@@ -190,8 +190,5 @@ _update_shape_index = 0
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 169.67, 69.4923 )
-move_speed = Vector2( 150, 0 )
-max_horizontal_speed = 200
-max_vertical_speed = 450
 
 
