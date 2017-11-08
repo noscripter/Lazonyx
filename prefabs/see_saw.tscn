@@ -170,6 +170,7 @@ transform/pos = Vector2( 64, 0 )
 
 [node name="body" type="KinematicBody2D" parent="left_hinge/right_hinge" groups=[
 "platforms",
+"jump_surface",
 ]]
 
 transform/pos = Vector2( -32.1066, 0 )

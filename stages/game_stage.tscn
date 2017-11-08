@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://textures/bg_v1.png" type="Texture" id=1]
 [ext_resource path="res://prefabs/coin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://prefabs/see_saw.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefabs/enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -19,6 +20,11 @@ points = Vector2Array( 786.226, 645.2, -140.772, 643.2, 13.5223, 609.091, 629.77
 
 custom_solver_bias = 0.0
 points = Vector2Array( 786.226, -110.798, 786.226, 645.2, 629.77, 613.173, 627.05, -110.545 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 307.764, 10 )
 
 [node name="game_stage" type="Node"]
 
@@ -56,75 +62,75 @@ editor/display_folded = true
 
 [node name="see_saw" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 240.755, 343.231 )
+transform/pos = Vector2( 240.755, 377.608 )
 
 [node name="see_saw7 6" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 243.199, 102.951 )
+transform/pos = Vector2( 243.199, 137.328 )
 
 [node name="see_saw6 2" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 239.94, 218.611 )
+transform/pos = Vector2( 239.94, 252.988 )
 
 [node name="see_saw3" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 340.125, 343.231 )
+transform/pos = Vector2( 340.125, 377.608 )
 
 [node name="see_saw7 3" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 342.568, 102.951 )
+transform/pos = Vector2( 342.568, 137.328 )
 
 [node name="see_saw6 5" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 340.418, 292.849 )
+transform/pos = Vector2( 337.962, 254.789 )
 
 [node name="see_saw4" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 437.866, 344.045 )
+transform/pos = Vector2( 437.866, 378.422 )
 
 [node name="see_saw7 2" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 440.309, 103.766 )
+transform/pos = Vector2( 440.309, 138.143 )
 
 [node name="see_saw6 6" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 437.051, 219.426 )
+transform/pos = Vector2( 437.051, 253.803 )
 
 [node name="see_saw5" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 542.235, 344.045 )
+transform/pos = Vector2( 542.235, 378.422 )
 
 [node name="see_saw7 5" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 539.679, 103.766 )
+transform/pos = Vector2( 539.679, 138.143 )
 
 [node name="see_saw6 4" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 536.421, 219.426 )
+transform/pos = Vector2( 536.421, 253.803 )
 
 [node name="see_saw1" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 140.571, 344.045 )
+transform/pos = Vector2( 140.571, 378.422 )
 
 [node name="see_saw7 4" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 143.014, 103.766 )
+transform/pos = Vector2( 143.014, 138.143 )
 
 [node name="see_saw6 3" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 139.756, 219.426 )
+transform/pos = Vector2( 139.756, 253.803 )
 
 [node name="see_saw2" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 41.2009, 344.045 )
+transform/pos = Vector2( 41.2009, 378.422 )
 
 [node name="see_saw7" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 43.6445, 103.766 )
+transform/pos = Vector2( 43.6445, 138.143 )
 
 [node name="see_saw6" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 40.3863, 219.426 )
+transform/pos = Vector2( 40.3863, 253.803 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
@@ -158,5 +164,31 @@ build_mode = 0
 polygon = Vector2Array( 13.5223, 609.091, 13.5223, -105.103, -138.772, -106.798, -140.772, 643.2, 786.226, 645.2, 786.226, -110.798, 627.05, -110.545, 629.77, 613.173 )
 shape_range = Vector2( 0, 2 )
 trigger = false
+
+[node name="floor" type="StaticBody2D" parent="." groups=[
+"jump_surface",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 318.82, 476.942 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape" type="CollisionShape2D" parent="floor"]
+
+transform/pos = Vector2( 318.82, 476.942 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="enemy" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 169.67, 69.4923 )
 
 
