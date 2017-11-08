@@ -5,28 +5,44 @@ export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
 
-onready var rigidbody     = get_node("body")
+onready var body     = get_node("body")
 
 func _ready():
-	set_process_input(true)
+	set_fixed_process(true)
 	pass
 	
+func _fixed_process(delta):
 	
-func _input(event):
-	if event.is_action("jump"):
-		var new_linear_velocity = rigidbody.get_linear_velocity() + jump_force
-		if new_linear_velocity.y < -max_vertical_velocity:
-			new_linear_velocity.y = -max_vertical_velocity
-		rigidbody.set_linear_velocity(new_linear_velocity)
-
-	if event.is_action("move_right"):
-		var new_linear_velocity = rigidbody.get_linear_velocity() + move_force
-		if new_linear_velocity.x > max_horizontal_velocity:
-			new_linear_velocity.x = max_horizontal_velocity
-		rigidbody.set_linear_velocity(new_linear_velocity)
-
-	if event.is_action("move_left"):
-		var new_linear_velocity = rigidbody.get_linear_velocity() - move_force
-		if new_linear_velocity.x < -max_horizontal_velocity:
-			new_linear_velocity.x = -max_horizontal_velocity
-		rigidbody.set_linear_velocity(new_linear_velocity)
+	# deal with left and right movement
+	if Input.is_action_pressed("move_left"):
+		addxvel(-max_horizontal_velocity)
+	elif Input.is_action_pressed("move_right"):
+		addxvel(max_horizontal_velocity)
+	else:
+		setxvel(0)
+		
+	#deal with jumping
+	if Input.is_action_pressed("jump"):
+		var colliding_bodies = body.get_colliding_bodies()
+		for body in colliding_bodies:
+			if body.is_in_group("platforms"):
+				addyvel(-max_vertical_velocity)
+	
+	pass
+	
+func addxvel(amount):
+	var current_vel = body.get_linear_velocity()
+	var current_y_vel = current_vel.y
+	var new_vel = current_vel + Vector2(amount,0)
+	new_vel.x = clamp(new_vel.x,-max_horizontal_velocity, max_horizontal_velocity)
+	body.set_linear_velocity(new_vel)
+	
+func addyvel(amount):
+	var current_vel = body.get_linear_velocity()
+	var current_x_vel = current_vel.x
+	var new_vel = current_vel + Vector2(0,amount)
+	new_vel.y = clamp(new_vel.y,-max_vertical_velocity, max_vertical_velocity)
+	body.set_linear_velocity(new_vel)
+	
+func setxvel(amount):
+	body.set_linear_velocity(Vector2(amount,body.get_linear_velocity().y))
