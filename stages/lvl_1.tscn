@@ -58,79 +58,101 @@ transform/rot = 38.8139
 
 [node name="platforms" type="Node2D" parent="."]
 
-editor/display_folded = true
-
-[node name="see_saw" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 240.755, 377.608 )
-
-[node name="see_saw7 6" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 243.199, 137.328 )
-
-[node name="see_saw6 2" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 239.94, 252.988 )
-
-[node name="see_saw3" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 340.125, 377.608 )
-
-[node name="see_saw7 3" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 342.568, 137.328 )
-
-[node name="see_saw6 5" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 337.962, 254.789 )
-
-[node name="see_saw4" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 437.866, 378.422 )
-
-[node name="see_saw7 2" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 440.309, 138.143 )
-
-[node name="see_saw6 6" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 437.051, 253.803 )
-
-[node name="see_saw5" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 542.235, 378.422 )
-
-[node name="see_saw7 5" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 539.679, 138.143 )
-
-[node name="see_saw6 4" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 536.421, 253.803 )
-
-[node name="see_saw1" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 140.571, 378.422 )
-
-[node name="see_saw7 4" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 143.014, 138.143 )
-
-[node name="see_saw6 3" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 139.756, 253.803 )
-
-[node name="see_saw2" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 41.2009, 378.422 )
-
 [node name="see_saw7" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 43.6445, 138.143 )
+transform/pos = Vector2( 27.6445, 104.143 )
 
-[node name="see_saw6" parent="platforms" instance=ExtResource( 3 )]
+[node name="see_saw13 6" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 40.3863, 253.803 )
+transform/pos = Vector2( 27.6445, 205.143 )
+
+[node name="see_saw137" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 27.6445, 303.143 )
+
+[node name="see_saw138" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 27.6445, 402.144 )
+
+[node name="see_saw8" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 126.645, 104.143 )
+
+[node name="see_saw13 3" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 126.645, 205.143 )
+
+[node name="see_saw134" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 126.645, 303.143 )
+
+[node name="see_saw138 3" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 126.645, 402.144 )
+
+[node name="see_saw9" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 226.645, 104.143 )
+
+[node name="see_saw13 4" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 226.645, 205.143 )
+
+[node name="see_saw135" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 226.645, 303.143 )
+
+[node name="see_saw138 5" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 226.645, 402.144 )
+
+[node name="see_saw10" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 327.645, 104.143 )
+
+[node name="see_saw13 5" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 327.645, 205.143 )
+
+[node name="see_saw136" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 327.645, 303.143 )
+
+[node name="see_saw138 2" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 327.645, 402.144 )
+
+[node name="see_saw11" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.646, 104.143 )
+
+[node name="see_saw13" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.646, 205.143 )
+
+[node name="see_saw14" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.646, 303.143 )
+
+[node name="see_saw15" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.646, 402.144 )
+
+[node name="see_saw12" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 525.646, 104.143 )
+
+[node name="see_saw13 2" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 525.646, 205.143 )
+
+[node name="see_saw133" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 525.646, 303.143 )
+
+[node name="see_saw138 4" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 525.646, 402.144 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
@@ -169,6 +191,7 @@ trigger = false
 "jump_surface",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 318.82, 476.942 )
@@ -190,5 +213,57 @@ _update_shape_index = 0
 [node name="enemy" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 169.67, 69.4923 )
+
+[node name="enemy1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 383.478, 81.7123 )
+
+[node name="enemy2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 269.848, 59.5648 )
+
+[node name="enemy3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 341.146, 66.7848 )
+
+[node name="enemy4" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 140.79, 27.0747 )
+transform/rot = -119.699
+
+[node name="enemy5" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 107.397, 22.5622 )
+transform/rot = -119.699
+
+[node name="enemy6" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 106.495, 59.5648 )
+transform/rot = -119.699
+
+[node name="enemy7" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 286.995, 25.2697 )
+transform/rot = -33.4376
+
+[node name="enemy8" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 350.171, 27.0747 )
+transform/rot = -33.4376
+
+[node name="enemy9" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 477.423, 27.9772 )
+transform/rot = 33.5495
+
+[node name="enemy10" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 521.646, 22.5622 )
+transform/rot = 33.5495
+
+[node name="enemy11" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 505.401, 63.1748 )
+transform/rot = 33.5495
 
 

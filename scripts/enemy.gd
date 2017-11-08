@@ -1,18 +1,43 @@
 extends RigidBody2D
 
+
+
 export var move_speed = Vector2(150, 0)
 export var max_horizontal_speed = 200
 export var max_vertical_speed = 450
 
+# 1 = right, -1 = left
+var direction = 1
+
 var body = self
 
-
 func _ready():
+	# TODO: delete this functionality
+	set_process_input(true)
+	connect("body_enter", self, "_body_enter")
 	set_fixed_process(true)
 	pass
+
+func _body_enter(body):
+	if body.is_in_group("walls"):
+		change_direction()
+
+func _input(event):
+	if event.is_action_pressed("kill_all_enemies"):
+		die()
+	
+	
+func die():
+	game_manager.enemy_died(get_pos(),get_linear_velocity())
+	queue_free()
+
+
+func change_direction():
+	direction *= -1
+
 	
 func _fixed_process(delta):
-	
+	setxvel(max_horizontal_speed * direction)
 	pass
 	
 # add x velocity

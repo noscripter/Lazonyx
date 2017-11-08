@@ -1,9 +1,10 @@
 extends Node
 
-const LEVEL_1 = "res://stages/lvl_1.tscn"
+var LEVEL_1
+
 
 func _ready():
-
+	LEVEL_1 = file_manager.LEVEL_1_FILE
 	pass
 
 func load_level(LEVEL):
@@ -13,3 +14,6 @@ func load_level(LEVEL):
 		get_tree().change_scene(LEVEL)
 	else:
 		print(LEVEL + " is not a valid file")
+		
+func add_to_current_scene(object):
+	get_tree().get_root().add_child(object)
