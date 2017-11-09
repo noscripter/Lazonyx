@@ -8,7 +8,10 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="enemy" type="RigidBody2D"]
+[node name="enemy" type="RigidBody2D" groups=[
+"enemies",
+"enemy_direction_switchers",
+]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )

@@ -4,11 +4,13 @@ export var jump_force = Vector2(0,-450)
 export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
+export var lives = 1
 
 onready var body     = get_node("body")
 
 func _ready():
 	set_fixed_process(true)
+	body.connect("body_enter", self, "_body_enter")
 	pass
 	
 func _fixed_process(delta):
@@ -29,6 +31,11 @@ func _fixed_process(delta):
 				addyvel(-max_vertical_velocity)
 	
 	pass
+	
+
+func _body_enter(other_body):
+	if other_body.is_in_group("enemies"):
+		get_parent().enemy_hit_player()
 
 # add x velocity
 func addxvel(amount):

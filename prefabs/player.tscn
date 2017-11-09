@@ -15,6 +15,7 @@ jump_force = Vector2( 0, -450 )
 move_force = Vector2( 150, 0 )
 max_horizontal_velocity = 200
 max_vertical_velocity = 450
+lives = 1
 
 [node name="body" type="RigidBody2D" parent="."]
 

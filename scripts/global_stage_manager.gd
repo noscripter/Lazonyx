@@ -1,10 +1,12 @@
 extends Node
 
 var LEVEL_1
+var MAIN_MENU
 
 
 func _ready():
-	LEVEL_1 = file_manager.LEVEL_1_FILE
+	LEVEL_1   = file_manager.LEVEL_1_FILE
+	MAIN_MENU = file_manager.MAIN_MENU_FILE
 	pass
 
 func load_level(LEVEL):
