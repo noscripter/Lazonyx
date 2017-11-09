@@ -8,6 +8,8 @@ export var lives = 1
 
 onready var body     = get_node("body")
 
+signal entered_goal
+
 func _ready():
 	set_fixed_process(true)
 	body.connect("body_enter", self, "_body_enter")
@@ -36,6 +38,8 @@ func _fixed_process(delta):
 func _body_enter(other_body):
 	if other_body.is_in_group("enemies"):
 		get_parent().enemy_hit_player()
+	if other_body.is_in_group("goals"):
+		emit_signal("entered_goal", self)
 
 # add x velocity
 func addxvel(amount):

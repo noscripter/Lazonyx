@@ -138,7 +138,7 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( -0.000646635, -1, 1.00495, -0.000649835, 0, 0.113834 )
 shapes/0/trigger = false
-collision/layers = 1
+collision/layers = 3
 collision/mask = 1
 collision/margin = 0.08
 

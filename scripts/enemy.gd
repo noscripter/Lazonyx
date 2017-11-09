@@ -9,6 +9,8 @@ var direction = 1
 
 var body = self
 
+signal entered_goal
+
 func _ready():
 	# TODO: delete this functionality
 	set_process_input(true)
@@ -19,6 +21,8 @@ func _ready():
 func _body_enter(body):
 	if body.is_in_group("enemy_direction_switchers"):
 		change_direction()
+	if body.is_in_group("goals"):
+		emit_signal("entered_goal", self)
 
 func _input(event):
 	if event.is_action_pressed("kill_all_enemies"):

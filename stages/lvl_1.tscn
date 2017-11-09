@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
@@ -24,7 +24,22 @@ points = Vector2Array( 786.226, -110.798, 786.226, 645.2, 629.77, 613.173, 627.0
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 307.764, 10 )
+extents = Vector2( 7.50961, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 94.2916, 47.9609 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 101.643, 47.9609 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 95.7617, 47.9609 )
 
 [node name="lvl_1" type="Node"]
 
@@ -188,14 +203,13 @@ polygon = Vector2Array( 13.5223, 609.091, 13.5223, -105.103, -138.772, -106.798,
 shape_range = Vector2( 0, 2 )
 trigger = false
 
-[node name="floor" type="StaticBody2D" parent="." groups=[
+[node name="floor_bit_left" type="StaticBody2D" parent="." groups=[
 "jump_surface",
 ]]
 
-editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 318.82, 476.942 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 207.676, 476.307 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -204,9 +218,31 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="collision_shape" type="CollisionShape2D" parent="floor"]
+[node name="collision_shape" type="CollisionShape2D" parent="floor_bit_left"]
 
-transform/pos = Vector2( 318.82, 476.942 )
+transform/pos = Vector2( 207.676, 476.307 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="floor_bit_right" type="StaticBody2D" parent="." groups=[
+"jump_surface",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 425.667, 475.332 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape" type="CollisionShape2D" parent="floor_bit_right"]
+
+transform/pos = Vector2( 425.667, 475.332 )
 shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
@@ -214,5 +250,74 @@ _update_shape_index = 0
 [node name="enemy_spawner" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 124, 7.00002 )
+
+[node name="goal_left" type="StaticBody2D" parent="." groups=[
+"goals",
+]]
+
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 106.44, 513.937 )
+shapes/0/trigger = true
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape" type="CollisionShape2D" parent="goal_left"]
+
+transform/pos = Vector2( 106.44, 513.937 )
+shape = SubResource( 5 )
+trigger = true
+_update_shape_index = 0
+
+[node name="goal_center" type="StaticBody2D" parent="." groups=[
+"goals",
+]]
+
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 316.225, 514.729 )
+shapes/0/trigger = true
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape" type="CollisionShape2D" parent="goal_center"]
+
+transform/pos = Vector2( 316.225, 514.729 )
+shape = SubResource( 6 )
+trigger = true
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="goal_right" type="StaticBody2D" parent="." groups=[
+"goals",
+]]
+
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 528.668, 514.729 )
+shapes/0/trigger = true
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape" type="CollisionShape2D" parent="goal_right"]
+
+transform/pos = Vector2( 528.668, 514.729 )
+shape = SubResource( 7 )
+trigger = true
+_update_shape_index = 0
 
 
