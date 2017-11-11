@@ -1,9 +1,11 @@
 extends Node
 
 #children
-onready var enemy_spawner = get_node("enemy_spawner")
-onready var player        = get_node("player")
-onready var debug_circle  = get_node("debug_circle")
+onready var enemy_spawner  = get_node("enemy_spawner")
+onready var player         = get_node("player")
+onready var debug_circle   = get_node("debug_circle")
+onready var menu_settings  = get_node("menu_settings")
+onready var menu_game_over = get_node("menu_game_over")
 
 var laser_ignore_objects =[player]
 
@@ -24,6 +26,9 @@ var points_per_goal = 1
 
 func _ready():
 	player.connect("entered_goal", self, "_player_entered_goal")
+	menu_settings. hide()
+	menu_game_over.hide()
+	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
 	set_process(true)
 	pass
 
@@ -90,7 +95,10 @@ func enemy_hit_player():
 		
 
 func game_over():
-	print("game_over")
+	menu_game_over.show()
 	
 func draw_debug_circle(location):
 	debug_circle.set_pos(location)
+	
+func _menu_game_over_btn_menu_main_pressed():
+	stage_manager.load_level(stage_manager.MENU_MAIN)

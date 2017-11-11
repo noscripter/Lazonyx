@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var target_goal = "goal_left"
+var target_goal = "goal_middle"
 
 signal entered_goal
 

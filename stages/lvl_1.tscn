@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/enemy_spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://prefabs/debug_circle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefabs/menu_settings.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefabs/menu_game_over.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -48,7 +50,6 @@ script/script = ExtResource( 1 )
 
 [node name="canvas_bg" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -173,6 +174,7 @@ transform/pos = Vector2( 530.646, 402.144 )
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 180.5, 307.752 )
+feet_distance = 20
 
 [node name="walls" type="StaticBody2D" parent="." groups=[
 "enemy_direction_switchers",
@@ -277,7 +279,7 @@ shape = SubResource( 5 )
 trigger = true
 _update_shape_index = 0
 
-[node name="goal_center" type="StaticBody2D" parent="." groups=[
+[node name="goal_middle" type="StaticBody2D" parent="." groups=[
 "goals",
 ]]
 
@@ -293,7 +295,7 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="collision_shape" type="CollisionShape2D" parent="goal_center"]
+[node name="collision_shape" type="CollisionShape2D" parent="goal_middle"]
 
 transform/pos = Vector2( 316.225, 514.729 )
 shape = SubResource( 6 )
@@ -329,5 +331,9 @@ _update_shape_index = 0
 [node name="debug_circle" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 289.001, 248.001 )
+
+[node name="menu_settings" parent="." instance=ExtResource( 7 )]
+
+[node name="menu_game_over" parent="." instance=ExtResource( 8 )]
 
 

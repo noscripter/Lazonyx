@@ -5,8 +5,12 @@ export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
 export var lives = 1
+export var feet_distance = 20
 
-var should_shoot = false
+var should_shoot        = false
+var jump_button_pressed = false
+
+
 
 onready var body     = get_node("body")
 
@@ -22,6 +26,8 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		should_shoot = true
+	if event.is_action_pressed("jump"):
+		jump_button_pressed = true
 
 func shoot():
 	var space_state = get_world_2d().get_direct_space_state()
@@ -38,6 +44,9 @@ func shoot():
 	
 func _fixed_process(delta):
 	
+	feet_distance = max_horizontal_velocity * 0.2;
+	if jump_button_pressed:
+		attempt_jump()
 	if should_shoot:
 		shoot()
 	if Input.is_action_pressed("move_left"):
@@ -46,16 +55,27 @@ func _fixed_process(delta):
 		addxvel(max_horizontal_velocity)
 	else:
 		setxvel(0)
-		
-	#deal with jumping
-	if Input.is_action_pressed("jump"):
-		var colliding_bodies = body.get_colliding_bodies()
-		for body in colliding_bodies:
-			if body.is_in_group("jump_surface"):
-				addyvel(-max_vertical_velocity)
+	
 	
 	pass
 	
+
+func attempt_jump():
+	var space_state = get_world_2d().get_direct_space_state()
+	# use global coordinates, not local to node
+	var player_pos = body.get_global_pos()
+	var feet_pos = body.get_global_pos() + Vector2(0,feet_distance)
+	var result = space_state.intersect_ray( player_pos, feet_pos, [self])
+	# deal with left and right movement
+	if (not result.empty()):
+		print("Hit at point: ",result.position)
+		get_parent().draw_debug_circle(result.position)
+		if result.collider.is_in_group("jump_surfaces"):
+			jump()
+	jump_button_pressed = false
+
+func jump():
+	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
 
 func _body_enter(other_body):
 	if other_body.is_in_group("enemies"):
