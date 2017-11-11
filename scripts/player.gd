@@ -37,9 +37,9 @@ func shoot():
 	if (not result.empty()):
 		print("Hit at point: ",result.position)
 		get_parent().draw_debug_circle(result.position)
-		if result.collider.is_in_group("enemies"):
+		if result.collider.is_in_group("enemy_hit_zones"):
 			var enemy_hit = result.collider
-			get_parent().player_hit_enemy(enemy_hit)
+			get_parent().player_hit_enemy(enemy_hit.get_parent())
 	should_shoot = false;
 	
 func _fixed_process(delta):
