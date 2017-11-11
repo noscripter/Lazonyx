@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
 [ext_resource path="res://prefabs/see_saw.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/enemy_spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefabs/debug_circle.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -174,8 +175,8 @@ transform/pos = Vector2( 530.646, 402.144 )
 transform/pos = Vector2( 180.5, 307.752 )
 
 [node name="walls" type="StaticBody2D" parent="." groups=[
-"walls",
 "enemy_direction_switchers",
+"walls",
 ]]
 
 editor/display_folded = true
@@ -207,6 +208,7 @@ trigger = false
 "jump_surface",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 207.676, 476.307 )
@@ -229,6 +231,7 @@ _update_shape_index = 0
 "jump_surface",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 425.667, 475.332 )
@@ -255,6 +258,7 @@ transform/pos = Vector2( 124, 7.00002 )
 "goals",
 ]]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 106.44, 513.937 )
@@ -277,6 +281,7 @@ _update_shape_index = 0
 "goals",
 ]]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 316.225, 514.729 )
@@ -302,6 +307,7 @@ __meta__ = {
 "goals",
 ]]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 528.668, 514.729 )
@@ -319,5 +325,9 @@ transform/pos = Vector2( 528.668, 514.729 )
 shape = SubResource( 7 )
 trigger = true
 _update_shape_index = 0
+
+[node name="debug_circle" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 289.001, 248.001 )
 
 

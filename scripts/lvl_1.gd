@@ -3,6 +3,9 @@ extends Node
 #children
 onready var enemy_spawner = get_node("enemy_spawner")
 onready var player        = get_node("player")
+onready var debug_circle  = get_node("debug_circle")
+
+var laser_ignore_objects =[player]
 
 #game
 var start_time = OS.get_unix_time()
@@ -33,18 +36,27 @@ func _process(delta):
 	pass
 
 func enemy_died(death_position, death_velocity):
-	var new_orb = file_manager.ORB_PREFAB.instance()
-	new_orb.set_pos(death_position)
-	new_orb.set_linear_velocity(death_velocity)
-	new_orb.connect("entered_goal", self, "_orb_entered_goal")
-	add_child(new_orb)
+	spawn_orb(death_position, death_velocity)
 	number_of_enemies -= 1
+	
+func spawn_orb(position,velocity):
+	var new_orb = file_manager.ORB_PREFAB.instance()
+	new_orb.set_pos(position)
+	new_orb.set_linear_velocity(velocity)
+	new_orb.connect("entered_goal", self, "_orb_entered_goal")
+	laser_ignore_objects.append(new_orb)
+	add_child(new_orb)
+	
+func player_hit_enemy(enemy):
+	enemy.die()
 	
 	
 func _orb_entered_goal(orb, goal):
 	if orb.target_goal == goal.get_name():
 		current_score += points_per_goal
 	print(current_score)
+	# remove this orb from the laser ignore array
+	laser_ignore_objects.remove(laser_ignore_objects.find(orb))
 	orb.queue_free()
 	
 func _enemy_entered_goal(enemy):
@@ -79,3 +91,6 @@ func enemy_hit_player():
 
 func game_over():
 	print("game_over")
+	
+func draw_debug_circle(location):
+	debug_circle.set_pos(location)

@@ -6,18 +6,40 @@ export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
 export var lives = 1
 
+var should_shoot = false
+
 onready var body     = get_node("body")
 
 signal entered_goal
 
+
 func _ready():
+	set_process_input(true)
 	set_fixed_process(true)
 	body.connect("body_enter", self, "_body_enter")
 	pass
+
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		should_shoot = true
+
+func shoot():
+	var space_state = get_world_2d().get_direct_space_state()
+	# use global coordinates, not local to node
+	var result = space_state.intersect_ray( body.get_global_pos(), get_global_mouse_pos(), get_parent().laser_ignore_objects)
+	# deal with left and right movement
+	if (not result.empty()):
+		print("Hit at point: ",result.position)
+		get_parent().draw_debug_circle(result.position)
+		if result.collider.is_in_group("enemies"):
+			var enemy_hit = result.collider
+			get_parent().player_hit_enemy(enemy_hit)
+	should_shoot = false;
 	
 func _fixed_process(delta):
 	
-	# deal with left and right movement
+	if should_shoot:
+		shoot()
 	if Input.is_action_pressed("move_left"):
 		addxvel(-max_horizontal_velocity)
 	elif Input.is_action_pressed("move_right"):

@@ -12,7 +12,7 @@ var state = STATE_LEVEL
 
 func _ready():
 	get_node("btn_right").connect("pressed", self, "_btn_right_pressed")
-	get_node("btn_left").connect("pressed", self, "_btn_left_pressed")
+	get_node("btn_left"). connect("pressed", self, "_btn_left_pressed")
 	pass
 
 func _btn_left_pressed():

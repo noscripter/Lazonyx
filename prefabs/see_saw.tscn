@@ -129,8 +129,8 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 79.7184, 0 )
 
 [node name="body" type="KinematicBody2D" parent="left_hinge/right_hinge" groups=[
-"jump_surface",
 "platforms",
+"jump_surface",
 ]]
 
 transform/pos = Vector2( -39.8424, 0 )
