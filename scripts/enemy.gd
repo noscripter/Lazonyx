@@ -19,7 +19,9 @@ func _ready():
 	pass
 
 func _body_enter(body):
+	print(body.get_groups())
 	if body.is_in_group("enemy_direction_switchers"):
+		print("enemy changing direction")
 		change_direction()
 	if body.is_in_group("goals"):
 		emit_signal("entered_goal", self)

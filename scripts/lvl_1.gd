@@ -6,6 +6,7 @@ onready var player         = get_node("player")
 onready var debug_circle   = get_node("debug_circle")
 onready var menu_settings  = get_node("menu_settings")
 onready var menu_game_over = get_node("menu_game_over")
+onready var hud            = get_node("hud")
 
 var laser_ignore_objects =[player]
 
@@ -29,6 +30,7 @@ func _ready():
 	menu_settings. hide()
 	menu_game_over.hide()
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
+	hud.show()
 	set_process(true)
 	pass
 
@@ -59,6 +61,7 @@ func player_hit_enemy(enemy):
 func _orb_entered_goal(orb, goal):
 	if orb.target_goal == goal.get_name():
 		current_score += points_per_goal
+		hud.set_current_score(current_score)
 	print(current_score)
 	# remove this orb from the laser ignore array
 	laser_ignore_objects.remove(laser_ignore_objects.find(orb))
