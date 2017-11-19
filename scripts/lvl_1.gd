@@ -17,7 +17,7 @@ var time_to_spawn_enemy = 1.0
 
 #enemies
 var number_of_enemies = 0
-var max_number_of_enemies = 5
+var max_number_of_enemies = 1
 var time_between_enemy_spawns = 1.0
 
 #player

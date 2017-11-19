@@ -1,30 +1,31 @@
-extends RigidBody2D
+extends Node2D
 
 export var move_speed = Vector2(150, 0)
 export var max_horizontal_speed = 200
 export var max_vertical_speed = 450
 
+onready var body    = get_node("body")
+onready var hit_box = get_node("hit box")
+
 # 1 = right, -1 = left
 var direction = 1
-
-var body = self
 
 signal entered_goal
 
 func _ready():
+	body.set_pos(Vector2(0,0))
 	# TODO: delete this functionality
 	set_process_input(true)
-	connect("body_enter", self, "_body_enter")
+	body.connect("body_enter", self, "_body_enter")
 	set_fixed_process(true)
 	pass
 
-func _body_enter(body):
-	print(body.get_groups())
-	if body.is_in_group("enemy_direction_switchers"):
+func _body_enter(other_body):
+	if other_body.is_in_group("enemy_direction_switchers"):
 		print("enemy changing direction")
 		change_direction()
-	if body.is_in_group("goals"):
-		emit_signal("entered_goal", self)
+	if other_body.is_in_group("goals"):
+		emit_signal("entered_goal", self.body)
 
 func _input(event):
 	if event.is_action_pressed("kill_all_enemies"):
@@ -32,7 +33,7 @@ func _input(event):
 	
 	
 func die():
-	get_parent().enemy_died(get_pos(),get_linear_velocity())
+	get_parent().enemy_died(body.get_global_pos(),body.get_linear_velocity())
 	queue_free()
 
 
@@ -42,6 +43,8 @@ func change_direction():
 	
 func _fixed_process(delta):
 	setxvel(max_horizontal_speed * direction)
+	body.set_rot(0)
+	hit_box.set_pos(body.get_pos())
 	pass
 	
 # add x velocity

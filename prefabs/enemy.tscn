@@ -8,12 +8,19 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
-radius = 28.4114
+radius = 31.3796
 
-[node name="enemy" type="RigidBody2D" groups=[
+[node name="enemy" type="Node2D"]
+
+script/script = ExtResource( 1 )
+move_speed = Vector2( 150, 0 )
+max_horizontal_speed = 200
+max_vertical_speed = 450
+
+[node name="body" type="RigidBody2D" parent="." groups=[
 "enemy_direction_switchers",
 ]]
 
@@ -30,7 +37,7 @@ bounce = 0.0
 gravity_scale = 5.0
 custom_integrator = false
 continuous_cd = 0
-contacts_reported = 1
+contacts_reported = 3
 contact_monitor = true
 sleeping = false
 can_sleep = true
@@ -38,16 +45,12 @@ velocity/linear = Vector2( 0, 0 )
 velocity/angular = 0.0
 damp_override/linear = -1.0
 damp_override/angular = -1.0
-script/script = ExtResource( 1 )
-move_speed = Vector2( 150, 0 )
-max_horizontal_speed = 200
-max_vertical_speed = 450
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="body"]
 
 texture = ExtResource( 2 )
 
-[node name="collision_shape" type="CollisionShape2D" parent="." groups=[
+[node name="collision_shape" type="CollisionShape2D" parent="body" groups=[
 "enemies",
 ]]
 
@@ -55,21 +58,21 @@ shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
-[node name="hit_zone" type="KinematicBody2D" parent="." groups=[
+[node name="hit box" type="KinematicBody2D" parent="." groups=[
 "enemy_hit_zones",
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 
-[node name="collision_shape" type="CollisionShape2D" parent="hit_zone"]
+[node name="collision shape" type="CollisionShape2D" parent="hit box"]
 
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 trigger = true
 _update_shape_index = 0
 
