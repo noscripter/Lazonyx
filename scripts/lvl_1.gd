@@ -22,6 +22,7 @@ var time_between_enemy_spawns = 1.0
 
 #player
 var current_score   = 0
+var top_score       = 0
 var points_per_goal = 1
 
 func _ready():
@@ -30,6 +31,11 @@ func _ready():
 	menu_settings. hide()
 	menu_game_over.hide()
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
+	top_score = file_manager.load_top_score()
+	hud.set_top_score(top_score)
+	hud.set_current_score(current_score)
+	hud.set_ammo(player.ammo)
+	hud.set_lives(player.lives)
 	hud.show()
 	set_process(true)
 	pass
@@ -107,6 +113,13 @@ func enemy_hit_player(enemy_body):
 		
 
 func game_over():
+	if current_score > top_score:
+		top_score = current_score
+		file_manager.save_top_score(current_score)
+		
+	menu_game_over.set_score(current_score)
+	menu_game_over.set_score_top(top_score)
+	
 	menu_game_over.show()
 	
 func draw_debug_circle(location):

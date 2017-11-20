@@ -6,7 +6,7 @@ export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
 export var lives = 3
 export var feet_distance = 20
-export var ammo = 3
+export var ammo = 300
 
 var should_shoot        = false
 var jump_button_pressed = false

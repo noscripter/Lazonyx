@@ -36,6 +36,26 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 45.0, 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("block_left:collision/layers")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("block_left:collision/mask")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -62,6 +82,26 @@ tracks/1/keys = {
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("block_left:collision/layers")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("block_left:collision/mask")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -90,6 +130,26 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("block_left:collision/layers")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("block_left:collision/mask")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
 
 [sub_resource type="Animation" id=5]
 
@@ -116,6 +176,26 @@ tracks/1/keys = {
 "transitions": FloatArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("block_left:collision/layers")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("block_left:collision/mask")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -226,6 +306,7 @@ __meta__ = {
 "jump_surfaces",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.49792, 0.128513 )
@@ -250,10 +331,10 @@ _update_shape_index = 0
 
 input/pickable = false
 shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 84.3038, 0.128513 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 84.138, 0.128513 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 0
+collision/mask = 0
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -261,7 +342,7 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="block_right"]
 
-transform/pos = Vector2( 84.3038, 0.128513 )
+transform/pos = Vector2( 84.138, 0.128513 )
 shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0

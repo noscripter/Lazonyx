@@ -18,6 +18,9 @@ func hide():
 func show():
 	canvas.set_offset(OFFSET_SHOW)
 	
+func set_top_score(score):
+	label_score_top.set_text("Top Score: " + str(score))
+
 func set_current_score(score):
 	label_score_current.set_text("Score: " + str(score))
 

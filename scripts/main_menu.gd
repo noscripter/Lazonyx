@@ -1,10 +1,11 @@
 extends Node
 
-onready var canvas        = get_node("canvas")
-onready var anim          = canvas.get_node("anim")
-onready var btn_play      = canvas.get_node("btn_play")
-onready var btn_settings  = canvas.get_node("btn_settings")
-onready var menu_settings = get_node("menu_settings")
+onready var canvas          = get_node("canvas")
+onready var anim            = canvas.get_node("anim")
+onready var btn_play        = canvas.get_node("btn_play")
+onready var btn_settings    = canvas.get_node("btn_settings")
+onready var menu_settings   = get_node("menu_settings")
+onready var label_score_top = canvas.get_node("label_score_top")
 
 func _ready():
 	btn_play.connect    ("pressed", self, "_btn_play_pressed")
@@ -12,6 +13,7 @@ func _ready():
 	menu_settings.hide()
 	var menu_settings_btn_return = menu_settings.get_node("canvas").get_node("btn_return")
 	menu_settings_btn_return.connect("pressed", self, "_menu_settings_btn_return_pressed")
+	set_top_score(file_manager.load_top_score())
 	pass
 
 func _btn_play_pressed():
@@ -22,3 +24,6 @@ func _btn_settings_pressed():
 
 func _menu_settings_btn_return_pressed():
 	menu_settings.hide()
+	
+func set_top_score(score):
+	label_score_top.set_text(str(score))
