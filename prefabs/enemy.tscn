@@ -3,12 +3,12 @@
 [ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://textures/enemy_a.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 31.3796
@@ -21,11 +21,12 @@ max_horizontal_speed = 200
 max_vertical_speed = 450
 
 [node name="body" type="RigidBody2D" parent="." groups=[
+"enemies",
 "enemy_direction_switchers",
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -54,7 +55,7 @@ texture = ExtResource( 2 )
 "enemies",
 ]]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -63,7 +64,7 @@ _update_shape_index = 0
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 collision/layers = 1
@@ -72,7 +73,7 @@ collision/margin = 0.08
 
 [node name="collision shape" type="CollisionShape2D" parent="hit box"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
 

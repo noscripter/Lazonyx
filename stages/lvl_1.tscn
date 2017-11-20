@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=25 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
@@ -10,20 +10,60 @@
 [ext_resource path="res://prefabs/menu_game_over.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefabs/hud.tscn" type="PackedScene" id=9]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -140.772, 643.2, -138.772, -106.798, 13.5223, -105.103, 13.5223, 609.091 )
+points = Vector2Array( 632.897, 610.12, 627.05, -110.545, 786.226, -110.798, 786.226, 645.2 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 786.226, 645.2, -140.772, 643.2, 13.5223, 609.091, 629.77, 613.173 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 786.226, -110.798, 786.226, 645.2, 629.77, 613.173, 627.05, -110.545 )
+points = Vector2Array( 632.897, 610.12, 786.226, 645.2, -140.772, 643.2, 13.5223, 609.091 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 13.5223, 609.091, -140.772, 643.2, -138.772, -106.798, 13.5912, -106.245 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 81.1477, 4.64282, -14.0788, 15.5258, -9.99768, -180.369, 79.7874, -105.548 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 79.7874, -105.548, -9.99768, -180.369, 177.735, -180.369, 166.852, -105.548 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 561.361, -176.288, 630.741, -180.369, 629.38, 14.1655, 551.839, 12.8051, 553.199, -105.548 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 459.333, -173.567, 561.361, -176.288, 553.199, -105.548, 455.252, -104.187 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 455.252, -104.187, 460.693, 15.5258, 355.944, 14.1655, 355.944, -102.827 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 355.944, -176.288, 459.333, -173.567, 455.252, -104.187, 355.944, -102.827, 260.718, -102.827 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 260.718, -102.827, 263.438, 11.4447, 165.491, 12.8051, 166.852, -105.548, 177.735, -180.369 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 260.718, -102.827, 177.735, -180.369, 262.078, -181.729, 355.944, -176.288 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -175,6 +215,7 @@ transform/pos = Vector2( 530.646, 402.144 )
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 180.5, 307.752 )
+lives = 3
 
 [node name="walls" type="StaticBody2D" parent="." groups=[
 "enemy_direction_switchers",
@@ -182,13 +223,13 @@ transform/pos = Vector2( 180.5, 307.752 )
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 2 )
+shapes/1/shape = SubResource( 9 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 3 )
+shapes/2/shape = SubResource( 10 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
 collision/layers = 1
@@ -201,8 +242,52 @@ bounce = 0.0
 [node name="collision_polygon" type="CollisionPolygon2D" parent="walls"]
 
 build_mode = 0
-polygon = Vector2Array( 13.5223, 609.091, 13.5223, -105.103, -138.772, -106.798, -140.772, 643.2, 786.226, 645.2, 786.226, -110.798, 627.05, -110.545, 629.77, 613.173 )
+polygon = Vector2Array( 13.5223, 609.091, 13.5912, -106.245, -138.772, -106.798, -140.772, 643.2, 786.226, 645.2, 786.226, -110.798, 627.05, -110.545, 632.897, 610.12 )
 shape_range = Vector2( 0, 2 )
+trigger = false
+
+[node name="ceilings" type="StaticBody2D" parent="." groups=[
+"enemy_direction_switchers",
+"walls",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 11 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 12 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 13 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 14 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 15 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = false
+shapes/5/shape = SubResource( 16 )
+shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/5/trigger = false
+shapes/6/shape = SubResource( 17 )
+shapes/6/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/6/trigger = false
+shapes/7/shape = SubResource( 18 )
+shapes/7/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/7/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_polygon" type="CollisionPolygon2D" parent="ceilings"]
+
+build_mode = 0
+polygon = Vector2Array( 630.741, -180.369, 629.38, 14.1655, 551.839, 12.8051, 553.199, -105.548, 455.252, -104.187, 460.693, 15.5258, 355.944, 14.1655, 355.944, -102.827, 260.718, -102.827, 263.438, 11.4447, 165.491, 12.8051, 166.852, -105.548, 79.7874, -105.548, 81.1477, 4.64282, -14.0788, 15.5258, -9.99768, -180.369, 177.735, -180.369, 262.078, -181.729, 355.944, -176.288, 459.333, -173.567, 561.361, -176.288 )
+shape_range = Vector2( 0, 7 )
 trigger = false
 
 [node name="floor_bit_left" type="StaticBody2D" parent="." groups=[
@@ -319,6 +404,9 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="collision_shape" type="CollisionShape2D" parent="goal_right"]
 
@@ -333,8 +421,35 @@ transform/pos = Vector2( 289.001, 248.001 )
 
 [node name="menu_settings" parent="." instance=ExtResource( 7 )]
 
+[node name="texture_bg" parent="menu_settings/canvas"]
+
+visibility/visible = false
+
+[node name="btn_return" parent="menu_settings/canvas"]
+
+visibility/visible = false
+
+[node name="texture_black" parent="menu_settings/canvas"]
+
+visibility/visible = false
+
+[node name="slider_music_volume" parent="menu_settings/canvas"]
+
+visibility/visible = false
+
+[node name="slider_input_sensitivity" parent="menu_settings/canvas"]
+
+visibility/visible = false
+
+[node name="slider_sound volume" parent="menu_settings/canvas"]
+
+visibility/visible = false
+
 [node name="menu_game_over" parent="." instance=ExtResource( 8 )]
+
+editor/display_folded = true
 
 [node name="hud" parent="." instance=ExtResource( 9 )]
 
 
+[editable path="menu_settings"]

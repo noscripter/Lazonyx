@@ -67,4 +67,22 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="label_lives" type="Label" parent="canvas"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 35.0
+margin/top = 107.0
+margin/right = 110.0
+margin/bottom = 121.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 3
+text = "Lives: XXX"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 

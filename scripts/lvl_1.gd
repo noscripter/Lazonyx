@@ -21,12 +21,12 @@ var max_number_of_enemies = 1
 var time_between_enemy_spawns = 1.0
 
 #player
-var player_lives = 3
-var current_score = 0
+var current_score   = 0
 var points_per_goal = 1
 
 func _ready():
 	player.connect("entered_goal", self, "_player_entered_goal")
+	player.connect("fired_shot", self, "_player_fired_shot")
 	menu_settings. hide()
 	menu_game_over.hide()
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
@@ -45,6 +45,12 @@ func _process(delta):
 func enemy_died(death_position, death_velocity):
 	spawn_orb(death_position, death_velocity)
 	number_of_enemies -= 1
+	
+func enemy_exploded():
+	number_of_enemies -= 1
+	
+func _player_fired_shot():
+	hud.set_ammo(player.ammo)
 	
 func spawn_orb(position,velocity):
 	var new_orb = file_manager.ORB_PREFAB.instance()
@@ -89,11 +95,14 @@ func attempt_spawn_enemy():
 		number_of_enemies += 1
 
 func deduct_life():
-	player_lives -= 1
-	if player_lives < 1:
+	player.lives -= 1
+	if player.lives < 1:
 		game_over()
+		return
+	hud.set_lives(player.lives)
 
-func enemy_hit_player():
+func enemy_hit_player(enemy_body):
+	enemy_body.get_parent().explode()
 	deduct_life()
 		
 

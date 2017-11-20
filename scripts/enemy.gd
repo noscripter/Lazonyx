@@ -14,8 +14,6 @@ signal entered_goal
 
 func _ready():
 	body.set_pos(Vector2(0,0))
-	# TODO: delete this functionality
-	set_process_input(true)
 	body.connect("body_enter", self, "_body_enter")
 	set_fixed_process(true)
 	pass
@@ -26,16 +24,15 @@ func _body_enter(other_body):
 		change_direction()
 	if other_body.is_in_group("goals"):
 		emit_signal("entered_goal", self.body)
-
-func _input(event):
-	if event.is_action_pressed("kill_all_enemies"):
-		die()
 	
 	
 func die():
 	get_parent().enemy_died(body.get_global_pos(),body.get_linear_velocity())
 	queue_free()
 
+func explode():
+	get_parent().enemy_exploded()
+	queue_free()
 
 func change_direction():
 	direction *= -1

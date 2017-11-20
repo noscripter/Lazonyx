@@ -4,8 +4,9 @@ export var jump_force = Vector2(0,-450)
 export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
-export var lives = 1
+export var lives = 3
 export var feet_distance = 20
+export var ammo = 3
 
 var should_shoot        = false
 var jump_button_pressed = false
@@ -15,6 +16,7 @@ var jump_button_pressed = false
 onready var body     = get_node("body")
 
 signal entered_goal
+signal fired_shot
 
 
 func _ready():
@@ -25,7 +27,8 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
-		should_shoot = true
+		if ammo > 0:
+			should_shoot = true
 	if event.is_action_pressed("jump"):
 		jump_button_pressed = true
 
@@ -40,7 +43,9 @@ func shoot():
 		if result.collider.is_in_group("enemy_hit_zones"):
 			var enemy_hit = result.collider
 			get_parent().player_hit_enemy(enemy_hit.get_parent())
-	should_shoot = false;
+	should_shoot = false
+	ammo -= 1
+	emit_signal("fired_shot")
 	
 func _fixed_process(delta):
 	
@@ -78,8 +83,10 @@ func jump():
 	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
 
 func _body_enter(other_body):
+	print(other_body.get_groups())
 	if other_body.is_in_group("enemies"):
-		get_parent().enemy_hit_player()
+		print("hit by enemy")
+		get_parent().enemy_hit_player(other_body)
 	if other_body.is_in_group("goals"):
 		emit_signal("entered_goal", self)
 
