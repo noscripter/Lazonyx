@@ -114,103 +114,101 @@ __meta__ = {
 
 [node name="platforms" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="see_saw7" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 32.6445, 104.143 )
-
-[node name="see_saw13 6" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 32.6445, 205.143 )
-
-[node name="see_saw137" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 32.6445, 303.143 )
-
-[node name="see_saw138" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 32.6445, 402.144 )
-
-[node name="see_saw8" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 131.645, 104.143 )
-
-[node name="see_saw13 3" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 131.645, 205.143 )
-
-[node name="see_saw134" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 131.645, 303.143 )
-
-[node name="see_saw138 3" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 131.645, 402.144 )
-
-[node name="see_saw9" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 231.645, 104.143 )
-
-[node name="see_saw13 4" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 231.645, 205.143 )
-
-[node name="see_saw135" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 231.645, 303.143 )
-
-[node name="see_saw138 5" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 231.645, 402.144 )
-
-[node name="see_saw10" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 332.645, 104.143 )
-
-[node name="see_saw13 5" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 332.645, 205.143 )
-
-[node name="see_saw136" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 332.645, 303.143 )
-
-[node name="see_saw138 2" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 332.645, 402.144 )
-
-[node name="see_saw11" parent="platforms" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 430.646, 104.143 )
+transform/pos = Vector2( 41.6695, 104.143 )
 
 [node name="see_saw13" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 430.646, 205.143 )
+transform/pos = Vector2( 41.6695, 199.808 )
 
 [node name="see_saw14" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 430.646, 303.143 )
+transform/pos = Vector2( 41.6695, 296.376 )
 
 [node name="see_saw15" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 430.646, 402.144 )
+transform/pos = Vector2( 41.6695, 392.944 )
 
-[node name="see_saw12" parent="platforms" instance=ExtResource( 3 )]
+[node name="see_saw8" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 530.646, 104.143 )
+transform/pos = Vector2( 137.685, 104.143 )
 
-[node name="see_saw13 2" parent="platforms" instance=ExtResource( 3 )]
+[node name="see_saw13 3" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 530.646, 205.143 )
+transform/pos = Vector2( 137.685, 199.808 )
 
-[node name="see_saw133" parent="platforms" instance=ExtResource( 3 )]
+[node name="see_saw134" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 530.646, 303.143 )
+transform/pos = Vector2( 137.685, 296.376 )
 
 [node name="see_saw138 4" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 530.646, 402.144 )
+transform/pos = Vector2( 137.685, 392.944 )
+
+[node name="see_saw9" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 233.742, 104.143 )
+
+[node name="see_saw13 2" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 233.742, 199.808 )
+
+[node name="see_saw133" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 233.742, 296.376 )
+
+[node name="see_saw138 3" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 233.742, 392.944 )
+
+[node name="see_saw10" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 329.843, 104.143 )
+
+[node name="see_saw13 4" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 329.843, 199.808 )
+
+[node name="see_saw135" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 329.843, 296.376 )
+
+[node name="see_saw138" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 329.843, 392.944 )
+
+[node name="see_saw11" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.849, 104.143 )
+
+[node name="see_saw13 6" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.849, 199.808 )
+
+[node name="see_saw137" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.849, 296.376 )
+
+[node name="see_saw138 5" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 425.849, 392.944 )
+
+[node name="see_saw12" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 521.877, 104.143 )
+
+[node name="see_saw13 5" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 521.877, 199.808 )
+
+[node name="see_saw136" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 521.877, 296.376 )
+
+[node name="see_saw138 2" parent="platforms" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 521.877, 392.944 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
