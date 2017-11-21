@@ -6,7 +6,7 @@ export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
 export var lives = 3
 export var feet_distance = 20
-export var ammo = 300
+export var ammo = 0
 
 var should_shoot        = false
 var jump_button_pressed = false
@@ -92,6 +92,8 @@ func jump():
 	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
 
 func _body_enter(other_body):
+	if other_body.is_in_group("ammo_pickups"):
+		get_parent().player_touched_ammo_pickup(self, other_body)
 	if other_body.is_in_group("enemies"):
 		get_parent().enemy_hit_player(other_body)
 	if other_body.is_in_group("goals"):

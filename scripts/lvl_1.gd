@@ -1,36 +1,37 @@
 extends Node
 
-# get references to children
-onready var enemy_spawner  = get_node("enemy_spawner")
-onready var player         = get_node("player")
-onready var debug_circle   = get_node("debug_circle")
-onready var menu_settings  = get_node("menu_settings")
-onready var menu_game_over = get_node("menu_game_over")
-onready var hud            = get_node("hud")
+#game
+var ammo_per_pickup = 10
+var max_number_of_enemies = 1
+var time_between_enemy_spawns = 1.0
+var points_per_goal = 1
 
+# get references to children
+onready var hud                 = get_node("hud")
+onready var player              = get_node("player")
+onready var debug_circle        = get_node("debug_circle")
+onready var enemy_spawner       = get_node("enemy_spawner")
+onready var menu_settings       = get_node("menu_settings")
+onready var menu_game_over      = get_node("menu_game_over")
+onready var ammo_pickup_spawner = get_node("ammo_pickup_spawner")
+
+## defaults
+var start_time = OS.get_unix_time()
+var game_time = start_time
+var current_level = 1
+var time_to_spawn_enemy = 1.0
+var number_of_enemies = 0
+var current_score   = 0
+var top_score       = 0
 # array of objects for laser to ignore
 var laser_ignore_objects = [player]
 
-#game
-var start_time = OS.get_unix_time()
-var game_time = start_time
-var time_to_spawn_enemy = 1.0
-var current_level = 1
-
-#enemies
-var number_of_enemies = 0
-var max_number_of_enemies = 1
-var time_between_enemy_spawns = 1.0
-
-#player
-var current_score   = 0
-var top_score       = 0
-var points_per_goal = 1
 
 func _ready():
 	# connect events to functions
 	player.connect("entered_goal", self, "_player_entered_goal")
 	player.connect("fired_shot", self, "_player_fired_shot")
+	player.ammo = ammo_per_pickup
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
 	
 	# hide menus
@@ -45,9 +46,15 @@ func _ready():
 	hud.set_current_score(current_score)
 	hud.set_ammo(player.ammo)
 	hud.set_lives(player.lives)
+	hud.set_level(current_level)
 	hud.show()
 	
 	set_process(true)
+	
+	print(ammo_pickup_spawner.get_random_location())
+	print(ammo_pickup_spawner.get_random_location())
+	print(ammo_pickup_spawner.get_random_location())
+	print(ammo_pickup_spawner.get_random_location())
 	pass
 
 func _process(delta):
@@ -71,6 +78,15 @@ func enemy_exploded():
 	
 func _player_fired_shot():
 	hud.set_ammo(player.ammo)
+	if player.ammo < 1:
+		spawn_ammo_pickup()
+		
+func spawn_ammo_pickup():
+	var pickup_spawn_location = ammo_pickup_spawner.get_random_location()
+	var new_ammo_pickup = file_manager.AMMO_PICKUP_PREFAB.instance()
+	new_ammo_pickup.set_global_pos(pickup_spawn_location)
+	laser_ignore_objects.append(new_ammo_pickup)
+	add_child(new_ammo_pickup)
 	
 func spawn_orb(position,velocity):
 	var new_orb = file_manager.ORB_PREFAB.instance()
@@ -83,6 +99,10 @@ func spawn_orb(position,velocity):
 func player_hit_enemy(enemy):
 	enemy.die()
 	
+func player_touched_ammo_pickup(player_that_touched, ammo_pickup):
+	player_that_touched.ammo += ammo_per_pickup
+	hud.set_ammo(player_that_touched.ammo)
+	ammo_pickup.queue_free()
 	
 func _orb_entered_goal(orb, goal):
 	

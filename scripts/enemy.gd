@@ -38,6 +38,8 @@ func change_direction():
 
 	
 func _fixed_process(delta):
+	if body.get_global_pos().y > (get_viewport().get_rect().size.y + 100):
+		explode()
 	setxvel(max_horizontal_speed * direction)
 	body.set_rot(0)
 	hit_box.set_pos(body.get_pos())
