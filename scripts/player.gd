@@ -60,7 +60,7 @@ func shoot():
 	emit_signal("fired_shot")
 	
 func _fixed_process(delta):
-	
+	body.set_rot(0)
 	feet_distance = max_horizontal_velocity * 0.2;
 	if jump_button_pressed:
 		attempt_jump()
