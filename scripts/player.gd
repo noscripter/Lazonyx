@@ -8,7 +8,6 @@ export var lives = 3
 export var feet_distance = 20
 export var ammo = 300
 
-
 var should_shoot        = false
 var jump_button_pressed = false
 
@@ -20,7 +19,6 @@ onready var anim         = get_node("anim")
 
 signal entered_goal
 signal fired_shot
-
 
 func _ready():
 	set_process_input(true)
@@ -47,11 +45,14 @@ func shoot():
 	var result = space_state.intersect_ray( body.get_global_pos(), raytrace_end_point, get_parent().laser_ignore_objects)
 	# deal with left and right movement
 	if (not result.empty()):
-		laser_end_point = result.position
+		
 		#get_parent().draw_debug_circle(result.position)
 		if result.collider.is_in_group("enemy_hit_zones"):
 			var enemy_hit = result.collider
 			get_parent().player_hit_enemy(enemy_hit.get_parent())
+			laser_end_point = enemy_hit.get_global_pos()
+		else:
+			laser_end_point = result.position
 	should_shoot = false
 	ammo -= 1
 	# TODO, calculate end pos if hit was empty
@@ -71,10 +72,8 @@ func _fixed_process(delta):
 		addxvel(max_horizontal_velocity)
 	else:
 		setxvel(0)
-	
-	
+
 	pass
-	
 
 func attempt_jump():
 	var space_state = get_world_2d().get_direct_space_state()
@@ -120,19 +119,25 @@ func setxvel(amount):
 
 func draw_laser(start, end):
 	
+	# move laser sprite to start position
 	laser_sprite.set_global_pos(start)
 	
+	# calculate the angle to rotate it by
 	var x_diff = end.x - start.x
 	var y_diff = end.y - start.y
 	var angle = atan2(x_diff, y_diff) - (PI/2)
-	print("angle = " + str(angle))
+	
+	# rotate to correct position
 	laser_sprite.set_rot(angle)
 	
+	# calculate correct length for sprite
 	var laser_length = sqrt(pow(x_diff,2)+pow(y_diff,2))
-	var sprite_width = laser_sprite.get_texture().get_width()
+	var texture_width = laser_sprite.get_texture().get_width()
 	
-	laser_sprite.set_scale(Vector2(laser_length/sprite_width, laser_sprite.get_scale().y))
+	# resize the sprite to correct width
+	laser_sprite.set_scale(Vector2(laser_length/texture_width, laser_sprite.get_scale().y))
 	
+	# play the laser flash animation
 	anim.play("flash_laser_beam")
 	
 	pass
