@@ -8,12 +8,15 @@ export var lives = 3
 export var feet_distance = 20
 export var ammo = 300
 
+
 var should_shoot        = false
 var jump_button_pressed = false
 
+const LASER_MAX_LENGTH = 700
 
-
-onready var body     = get_node("body")
+onready var body         = get_node("body")
+onready var laser_sprite = get_node("sprite_laser")
+onready var anim         = get_node("anim")
 
 signal entered_goal
 signal fired_shot
@@ -35,16 +38,24 @@ func _input(event):
 func shoot():
 	var space_state = get_world_2d().get_direct_space_state()
 	# use global coordinates, not local to node
-	var result = space_state.intersect_ray( body.get_global_pos(), get_global_mouse_pos(), get_parent().laser_ignore_objects)
+	
+	var raytrace_end_point = get_global_mouse_pos() - body.get_global_pos()
+	var raytrace_length = raytrace_end_point.length()
+	raytrace_end_point *= (LASER_MAX_LENGTH / raytrace_length)
+	raytrace_end_point = body.get_global_pos() + raytrace_end_point
+	var laser_end_point = raytrace_end_point
+	var result = space_state.intersect_ray( body.get_global_pos(), raytrace_end_point, get_parent().laser_ignore_objects)
 	# deal with left and right movement
 	if (not result.empty()):
-		print("Hit at point: ",result.position)
-		get_parent().draw_debug_circle(result.position)
+		laser_end_point = result.position
+		#get_parent().draw_debug_circle(result.position)
 		if result.collider.is_in_group("enemy_hit_zones"):
 			var enemy_hit = result.collider
 			get_parent().player_hit_enemy(enemy_hit.get_parent())
 	should_shoot = false
 	ammo -= 1
+	# TODO, calculate end pos if hit was empty
+	draw_laser(body.get_global_pos(), laser_end_point)
 	emit_signal("fired_shot")
 	
 func _fixed_process(delta):
@@ -73,8 +84,7 @@ func attempt_jump():
 	var result = space_state.intersect_ray( player_pos, feet_pos, [self])
 	# deal with left and right movement
 	if (not result.empty()):
-		print("Hit at point: ",result.position)
-		get_parent().draw_debug_circle(result.position)
+		#get_parent().draw_debug_circle(result.position)
 		if result.collider.is_in_group("jump_surfaces"):
 			jump()
 	jump_button_pressed = false
@@ -83,9 +93,7 @@ func jump():
 	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
 
 func _body_enter(other_body):
-	print(other_body.get_groups())
 	if other_body.is_in_group("enemies"):
-		print("hit by enemy")
 		get_parent().enemy_hit_player(other_body)
 	if other_body.is_in_group("goals"):
 		emit_signal("entered_goal", self)
@@ -109,3 +117,22 @@ func addyvel(amount):
 # set x velocity
 func setxvel(amount):
 	body.set_linear_velocity(Vector2(amount,body.get_linear_velocity().y))
+
+func draw_laser(start, end):
+	
+	laser_sprite.set_global_pos(start)
+	
+	var x_diff = end.x - start.x
+	var y_diff = end.y - start.y
+	var angle = atan2(x_diff, y_diff) - (PI/2)
+	print("angle = " + str(angle))
+	laser_sprite.set_rot(angle)
+	
+	var laser_length = sqrt(pow(x_diff,2)+pow(y_diff,2))
+	var sprite_width = laser_sprite.get_texture().get_width()
+	
+	laser_sprite.set_scale(Vector2(laser_length/sprite_width, laser_sprite.get_scale().y))
+	
+	anim.play("flash_laser_beam")
+	
+	pass

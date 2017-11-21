@@ -20,7 +20,6 @@ func _ready():
 
 func _body_enter(other_body):
 	if other_body.is_in_group("enemy_direction_switchers"):
-		print("enemy changing direction")
 		change_direction()
 	if other_body.is_in_group("goals"):
 		emit_signal("entered_goal", self.body)

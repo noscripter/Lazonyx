@@ -95,6 +95,11 @@ func find_scene_node(name):
 	get_node(name)
 	
 func attempt_spawn_enemy():
+	
+	var new_spawner_pos_x = rand_range(100,get_viewport().get_rect().size.x - 200)
+	var new_spawner_pos_y = enemy_spawner.get_pos().y
+	
+	enemy_spawner.set_pos(Vector2(new_spawner_pos_x, new_spawner_pos_y))
 	if number_of_enemies < max_number_of_enemies:
 		var new_enemy = enemy_spawner.spawn_enemy()
 		new_enemy.connect("entered_goal", self, "_enemy_entered_goal")

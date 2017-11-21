@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scripts/menu_settings.gd" type="Script" id=1]
-[ext_resource path="res://textures/UI/game_over_menu_bg.png" type="Texture" id=2]
+[ext_resource path="res://textures/UI/settings_menu_bg.png" type="Texture" id=2]
 [ext_resource path="res://textures/UI/game_over_menu_btn_main_menu.png" type="Texture" id=3]
 [ext_resource path="res://textures/black16x16.png" type="Texture" id=4]
 [ext_resource path="res://textures/player.png" type="Texture" id=5]
-[ext_resource path="res://textures/see_saw.png" type="Texture" id=6]
+[ext_resource path="res://textures/UI/slider_v1.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -79,9 +79,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 69.0
-margin/top = -154.0
+margin/top = -168.0
 margin/right = -67.0
-margin/bottom = -195.0
+margin/bottom = -209.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -124,10 +124,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 118.0
-margin/top = 319.0
+margin/left = 140.0
+margin/top = 351.0
 margin/right = 510.0
-margin/bottom = 354.0
+margin/bottom = 360.0
 custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = SubResource( 2 )
 range/min = 0.0
@@ -147,10 +147,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 118.0
-margin/top = 192.0
-margin/right = 510.0
-margin/bottom = 227.0
+margin/left = 137.0
+margin/top = 187.0
+margin/right = 507.0
+margin/bottom = 196.0
 custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = SubResource( 2 )
 range/min = 0.0
@@ -170,10 +170,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 118.0
-margin/top = 258.0
-margin/right = 510.0
-margin/bottom = 293.0
+margin/left = 139.0
+margin/top = 275.0
+margin/right = 509.0
+margin/bottom = 284.0
 custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = SubResource( 2 )
 range/min = 0.0
