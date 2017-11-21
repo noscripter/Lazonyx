@@ -14,11 +14,14 @@ var laser_ignore_objects =[player]
 var start_time = OS.get_unix_time()
 var game_time = start_time
 var time_to_spawn_enemy = 1.0
+var current_level = 1
 
 #enemies
 var number_of_enemies = 0
 var max_number_of_enemies = 1
 var time_between_enemy_spawns = 1.0
+
+
 
 #player
 var current_score   = 0
@@ -73,7 +76,10 @@ func player_hit_enemy(enemy):
 func _orb_entered_goal(orb, goal):
 	if orb.target_goal == goal.get_name():
 		current_score += points_per_goal
+		current_level = floor(current_score/10) + 1
+		max_number_of_enemies = current_level
 		hud.set_current_score(current_score)
+		hud.set_level(current_level)
 	print(current_score)
 	# remove this orb from the laser ignore array
 	laser_ignore_objects.remove(laser_ignore_objects.find(orb))
