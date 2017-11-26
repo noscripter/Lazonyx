@@ -1,8 +1,14 @@
 extends Node2D
 
+const SOUND_SWING_DOWN = "swosh"
+const SOUND_SWING_UP   = "swosh"
+
 var anim_index = 0
 var anim_names = ["level_to_leftdown", "leftdown_to_level", "level_to_rightdown", "rightdown_to_level"]
-onready var anim = get_node("anim_player")
+
+
+onready var anim          = get_node("anim_player")
+onready var sample_player = get_node("sample_player")
 
 const STATE_LEVEL     = 0
 const STATE_LEFTDOWN  = 1
@@ -29,15 +35,18 @@ func _btn_right_pressed():
 
 func change_state(new_state):
 	var prev_state = state
-	state = new_state
-	if state == STATE_LEVEL:
+	if new_state == STATE_LEVEL:
 		if prev_state == STATE_LEFTDOWN:
+			sample_player.play(SOUND_SWING_UP)
 			anim.play("leftdown_to_level")
 		elif prev_state == STATE_RIGHTDOWN:
+			sample_player.play(SOUND_SWING_UP)
 			anim.play("rightdown_to_level")
-	elif state == STATE_LEFTDOWN:
+	elif new_state == STATE_LEFTDOWN:
 		if prev_state == STATE_LEVEL:
+			sample_player.play(SOUND_SWING_DOWN)
 			anim.play("level_to_leftdown")
-	elif state == STATE_RIGHTDOWN:
+	elif new_state == STATE_RIGHTDOWN:
 		if prev_state == STATE_LEVEL:
+			sample_player.play(SOUND_SWING_DOWN)
 			anim.play("level_to_rightdown")

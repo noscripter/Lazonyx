@@ -1,10 +1,14 @@
 extends Node
 
+const SOUND_SCORE_POINT  = "Collect_Point_00"
+const SOUND_HIT_BY_ENEMY = "Hit_02"
+
 #game
 var ammo_per_pickup = 10
 var max_number_of_enemies = 1
 var time_between_enemy_spawns = 1.0
 var points_per_goal = 1
+var starting_lives = 1000
 
 # get references to children
 onready var hud                 = get_node("hud")
@@ -14,6 +18,7 @@ onready var enemy_spawner       = get_node("enemy_spawner")
 onready var menu_settings       = get_node("menu_settings")
 onready var menu_game_over      = get_node("menu_game_over")
 onready var ammo_pickup_spawner = get_node("ammo_pickup_spawner")
+onready var sample_player       = get_node("sample_player")
 
 ## defaults
 var start_time = OS.get_unix_time()
@@ -32,6 +37,7 @@ func _ready():
 	player.connect("entered_goal", self, "_player_entered_goal")
 	player.connect("fired_shot", self, "_player_fired_shot")
 	player.ammo = ammo_per_pickup
+	player.lives = starting_lives
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
 	
 	# hide menus
@@ -108,6 +114,8 @@ func _orb_entered_goal(orb, goal):
 	
 	# if it's the right goal for this orb
 	if orb.target_goal == goal.get_name():
+		
+		sample_player.play(SOUND_SCORE_POINT)
 		# increase score
 		current_score += points_per_goal
 		# calculate current level based on score
@@ -164,6 +172,7 @@ func deduct_life():
 	hud.set_lives(player.lives)
 
 func enemy_hit_player(enemy_body):
+	sample_player.play(SOUND_HIT_BY_ENEMY)
 	enemy_body.get_parent().explode()
 	deduct_life()
 		

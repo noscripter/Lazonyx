@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
@@ -11,46 +11,70 @@
 [ext_resource path="res://prefabs/menu_game_over.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/spawner_ammo_pickup.gd" type="Script" id=10]
 [ext_resource path="res://textures/indicator.png" type="Texture" id=11]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Collect_Point_00.wav" type="Sample" id=12]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Hit_00.wav" type="Sample" id=13]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Hit_02.wav" type="Sample" id=14]
 
-[sub_resource type="ConvexPolygonShape2D" id=16]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -136.946, -47.3506, 35.9085, -47.3506, 31.8656, 603.386, -140.772, 643.2 )
 
-[sub_resource type="ConvexPolygonShape2D" id=17]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 786.226, 645.2, -140.772, 643.2, 31.8656, 603.386, 609.159, 604.688 )
 
-[sub_resource type="ConvexPolygonShape2D" id=18]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 784.944, -50.6747, 786.226, 645.2, 609.159, 604.688, 608.765, -49.5667 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 369.429, 10 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.50961, 10 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 94.2916, 47.9609 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 101.643, 47.9609 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 95.7617, 47.9609 )
+
+[sub_resource type="SampleLibrary" id=9]
+
+samples/Collect_Point_00 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+samples/Hit_00 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 13 )
+}
+samples/Hit_02 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
 
 [node name="lvl_1" type="Node"]
 
@@ -200,13 +224,13 @@ transform/pos = Vector2( -26.1256, 258.616 )
 ]]
 
 input/pickable = false
-shapes/0/shape = SubResource( 16 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 17 )
+shapes/1/shape = SubResource( 2 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 18 )
+shapes/2/shape = SubResource( 3 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
 collision/layers = 1
@@ -230,7 +254,7 @@ trigger = false
 
 editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 19 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 319.116, -38.7814 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -243,7 +267,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ceilings"]
 
 transform/pos = Vector2( 319.116, -38.7814 )
-shape = SubResource( 19 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
@@ -253,7 +277,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 207.676, 476.307 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -266,7 +290,7 @@ bounce = 0.0
 [node name="collision_shape" type="CollisionShape2D" parent="floor_bit_left"]
 
 transform/pos = Vector2( 207.676, 476.307 )
-shape = SubResource( 12 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
@@ -276,7 +300,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 425.667, 475.332 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -289,7 +313,7 @@ bounce = 0.0
 [node name="collision_shape" type="CollisionShape2D" parent="floor_bit_right"]
 
 transform/pos = Vector2( 425.667, 475.332 )
-shape = SubResource( 12 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
@@ -299,7 +323,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 106.44, 513.937 )
 shapes/0/trigger = true
 collision/layers = 2
@@ -312,7 +336,7 @@ bounce = 0.0
 [node name="collision_shape" type="CollisionShape2D" parent="goal_left"]
 
 transform/pos = Vector2( 106.44, 513.937 )
-shape = SubResource( 13 )
+shape = SubResource( 6 )
 trigger = true
 _update_shape_index = 0
 
@@ -322,7 +346,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 14 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 316.225, 514.729 )
 shapes/0/trigger = true
 collision/layers = 2
@@ -335,7 +359,7 @@ bounce = 0.0
 [node name="collision_shape" type="CollisionShape2D" parent="goal_middle"]
 
 transform/pos = Vector2( 316.225, 514.729 )
-shape = SubResource( 14 )
+shape = SubResource( 7 )
 trigger = true
 _update_shape_index = 0
 __meta__ = {
@@ -348,7 +372,7 @@ __meta__ = {
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 15 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 528.668, 514.729 )
 shapes/0/trigger = true
 collision/layers = 2
@@ -364,7 +388,7 @@ __meta__ = {
 [node name="collision_shape" type="CollisionShape2D" parent="goal_right"]
 
 transform/pos = Vector2( 528.668, 514.729 )
-shape = SubResource( 15 )
+shape = SubResource( 8 )
 trigger = true
 _update_shape_index = 0
 
@@ -408,6 +432,7 @@ offset = Vector2( 640, 480 )
 
 [node name="ammo_pickup_spawner" type="Node" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 10 )
 
 [node name="ammo_spawn_point_1" type="Node2D" parent="ammo_pickup_spawner"]
@@ -525,6 +550,23 @@ transform/pos = Vector2( 559.569, 374.894 )
 
 transform/pos = Vector2( 0, 7.18488 )
 texture = ExtResource( 11 )
+
+[node name="sample_player" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 9 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
 
 
 [editable path="menu_settings"]

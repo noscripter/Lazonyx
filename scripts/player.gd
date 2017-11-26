@@ -1,10 +1,13 @@
 extends Node2D
 
+const SOUND_LASER = "laser1"
+const SOUND_JUMP  = "Jump_00"
+
 export var jump_force = Vector2(0,-450)
 export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
 export var max_vertical_velocity = 450
-export var lives = 3
+export var lives = 0
 export var feet_distance = 20
 export var ammo = 0
 
@@ -12,10 +15,10 @@ var should_shoot        = false
 var jump_button_pressed = false
 
 const LASER_MAX_LENGTH = 700
-
-onready var body         = get_node("body")
-onready var laser_sprite = get_node("sprite_laser")
-onready var anim         = get_node("anim")
+onready var body           = get_node("body")
+onready var laser_sprite   = get_node("sprite_laser")
+onready var anim           = get_node("anim")
+onready var sample_player  = get_node("sample_player")
 
 signal entered_goal
 signal fired_shot
@@ -57,6 +60,7 @@ func shoot():
 	ammo -= 1
 	# TODO, calculate end pos if hit was empty
 	draw_laser(body.get_global_pos(), laser_end_point)
+	sample_player.play(SOUND_LASER)
 	emit_signal("fired_shot")
 	
 func _fixed_process(delta):
@@ -90,6 +94,7 @@ func attempt_jump():
 
 func jump():
 	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
+	sample_player.play(SOUND_JUMP)
 
 func _body_enter(other_body):
 	if other_body.is_in_group("ammo_pickups"):

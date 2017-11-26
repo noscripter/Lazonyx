@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/see_saw.gd" type="Script" id=1]
 [ext_resource path="res://textures/see_saw.png" type="Texture" id=2]
 [ext_resource path="res://textures/level_button_v1.png" type="Texture" id=3]
+[ext_resource path="res://audio/sounds/swosh.wav" type="Sample" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -203,6 +204,15 @@ tracks/3/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 3.57456, 7.98631 )
 
+[sub_resource type="SampleLibrary" id=7]
+
+samples/swosh = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+
 [node name="see_saw" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -214,8 +224,8 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 79.7184, 0 )
 
 [node name="body" type="KinematicBody2D" parent="left_hinge/right_hinge" groups=[
-"platforms",
 "jump_surfaces",
+"platforms",
 ]]
 
 transform/pos = Vector2( -39.8424, 0 )
@@ -346,5 +356,22 @@ transform/pos = Vector2( 84.138, 0.128513 )
 shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
+
+[node name="sample_player" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 7 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
 
 
