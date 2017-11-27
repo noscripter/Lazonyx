@@ -50,3 +50,4 @@ func change_state(new_state):
 		if prev_state == STATE_LEVEL:
 			sample_player.play(SOUND_SWING_DOWN)
 			anim.play("level_to_rightdown")
+	state = new_state

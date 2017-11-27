@@ -2,6 +2,7 @@ extends Node
 
 const SOUND_SCORE_POINT  = "Collect_Point_00"
 const SOUND_HIT_BY_ENEMY = "Hit_02"
+const MUSIC_BACKGROUND   = "Lazonyx_idea_v1"
 
 #game
 var ammo_per_pickup = 10
@@ -12,13 +13,15 @@ var starting_lives = 1000
 
 # get references to children
 onready var hud                 = get_node("hud")
+onready var menu_settings       = get_node("menu_settings")
+onready var menu_game_over      = get_node("menu_game_over")
+onready var menu_pause          = get_node("menu_pause")
 onready var player              = get_node("player")
 onready var debug_circle        = get_node("debug_circle")
 onready var enemy_spawner       = get_node("enemy_spawner")
-onready var menu_settings       = get_node("menu_settings")
-onready var menu_game_over      = get_node("menu_game_over")
 onready var ammo_pickup_spawner = get_node("ammo_pickup_spawner")
 onready var sample_player       = get_node("sample_player")
+onready var music_player        = get_node("music_player")
 
 ## defaults
 var start_time = OS.get_unix_time()
@@ -39,6 +42,8 @@ func _ready():
 	player.ammo = ammo_per_pickup
 	player.lives = starting_lives
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
+	menu_pause.btn_resume.  connect("pressed", self, "_menu_pause_btn_resume_pressed")
+	menu_pause.btn_settings.connect("pressed", self, "_menu_pause_btn_settings_pressed")
 	
 	# hide menus
 	menu_settings. hide()
@@ -55,12 +60,12 @@ func _ready():
 	hud.set_level(current_level)
 	hud.show()
 	
-	set_process(true)
+	#audio
+	music_player.play(MUSIC_BACKGROUND)
 	
-	print(ammo_pickup_spawner.get_random_location())
-	print(ammo_pickup_spawner.get_random_location())
-	print(ammo_pickup_spawner.get_random_location())
-	print(ammo_pickup_spawner.get_random_location())
+	set_process(true)
+	set_process_input(true)
+	
 	pass
 
 func _process(delta):
@@ -72,6 +77,22 @@ func _process(delta):
 		
 	time_to_spawn_enemy = game_time + time_between_enemy_spawns
 	pass
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		pause_game()
+		
+func pause_game():
+	get_tree().set_pause(true)
+	music_player.stop_all()
+	menu_pause.show()
+	
+	
+func unpause_game():
+	print("unpause game")
+	get_tree().set_pause(false)
+	music_player.play(MUSIC_BACKGROUND)
+	menu_pause.hide()
 
 # deal with enemy death by player
 func enemy_died(death_position, death_velocity):
@@ -186,9 +207,21 @@ func game_over():
 	menu_game_over.set_score_top(top_score)
 	
 	menu_game_over.show()
+
+func show_settings_menu():
+	menu_settings.show()
 	
 func draw_debug_circle(location):
 	debug_circle.set_pos(location)
 	
 func _menu_game_over_btn_menu_main_pressed():
 	stage_manager.load_level(stage_manager.MENU_MAIN)
+
+func _menu_pause_btn_resume_pressed():
+	if get_tree().is_paused():
+		unpause_game()
+		
+func _menu_pause_btn_settings_pressed():
+	print("settings button pressed")
+	show_settings_menu()
+	

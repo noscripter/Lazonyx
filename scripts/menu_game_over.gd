@@ -4,7 +4,7 @@ onready var canvas          = get_node("canvas")
 onready var label_score     = canvas.get_node("label_score")
 onready var label_score_top = canvas.get_node("label_score_top")
 
-const OFFSET_HIDE = Vector2(-1000,-1000)
+const OFFSET_HIDE = Vector2(1000,1000)
 const OFFSET_SHOW = Vector2(0,0)
 
 signal btn_menu_main_pressed

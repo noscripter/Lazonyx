@@ -27,4 +27,3 @@ func load_top_score():
 			return filedata.topscore
 	return 0
 
-	

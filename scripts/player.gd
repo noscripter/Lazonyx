@@ -1,7 +1,7 @@
 extends Node2D
 
-const SOUND_LASER = "laser1"
-const SOUND_JUMP  = "Jump_00"
+const SOUND_LASER       = "laser1"
+const SOUND_JUMP        = "Jump_00"
 
 export var jump_force = Vector2(0,-450)
 export var move_force = Vector2(150, 0)
@@ -19,6 +19,7 @@ onready var body           = get_node("body")
 onready var laser_sprite   = get_node("sprite_laser")
 onready var anim           = get_node("anim")
 onready var sample_player  = get_node("sample_player")
+onready var music_player   = get_node("music_player")
 
 signal entered_goal
 signal fired_shot
