@@ -11,6 +11,11 @@ var time_between_enemy_spawns = 1.0
 var points_per_goal = 1
 var starting_lives = 1000
 
+#audio
+
+var music_volume = 1.0
+var sound_volume = 1.0
+
 # get references to children
 onready var hud                 = get_node("hud")
 onready var menu_settings       = get_node("menu_settings")
@@ -42,8 +47,9 @@ func _ready():
 	player.ammo = ammo_per_pickup
 	player.lives = starting_lives
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
-	menu_pause.btn_resume.  connect("pressed", self, "_menu_pause_btn_resume_pressed")
+	menu_pause.btn_resume.connect("pressed", self, "_menu_pause_btn_resume_pressed")
 	menu_pause.btn_settings.connect("pressed", self, "_menu_pause_btn_settings_pressed")
+	menu_settings.connect("btn_return_pressed", self, "_menu_settings_btn_return_pressed")
 	
 	# hide menus
 	menu_settings. hide()
@@ -61,6 +67,8 @@ func _ready():
 	hud.show()
 	
 	#audio
+	sound_volume = file_manager.load_sound_volume()
+	music_volume = file_manager.load_music_volume()
 	music_player.play(MUSIC_BACKGROUND)
 	
 	set_process(true)
@@ -224,4 +232,6 @@ func _menu_pause_btn_resume_pressed():
 func _menu_pause_btn_settings_pressed():
 	print("settings button pressed")
 	show_settings_menu()
-	
+
+func _menu_settings_btn_return_pressed():
+	menu_settings.hide()

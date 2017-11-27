@@ -152,7 +152,7 @@ tick_count = 10
 ticks_on_borders = true
 focus_mode = 2
 
-[node name="slider_sound volume" type="HSlider" parent="canvas"]
+[node name="slider_sound_volume" type="HSlider" parent="canvas"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
