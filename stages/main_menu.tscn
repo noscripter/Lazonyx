@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://textures/UI/main_menu_bg.png" type="Texture" id=2]
-[ext_resource path="res://textures/UI/main_menu_btn_play.png" type="Texture" id=3]
-[ext_resource path="res://textures/UI/main_menu_btn_settings.png" type="Texture" id=4]
-[ext_resource path="res://textures/black16x16.png" type="Texture" id=5]
-[ext_resource path="res://prefabs/menu_settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://textures/UI/btn_settings.png" type="Texture" id=3]
+[ext_resource path="res://textures/UI/btn_settings_pressed.png" type="Texture" id=4]
+[ext_resource path="res://textures/UI/btn_settings_hover.png" type="Texture" id=5]
+[ext_resource path="res://textures/black16x16.png" type="Texture" id=6]
+[ext_resource path="res://fonts/Orbitron-Black.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://textures/UI/main_menu_btn_play.png" type="Texture" id=8]
+[ext_resource path="res://textures/UI/main_menu_btn_play_pressed.png" type="Texture" id=9]
+[ext_resource path="res://textures/UI/main_menu_btn_play_hover.png" type="Texture" id=10]
+[ext_resource path="res://textures/UI/main_menu_btn_quit.png" type="Texture" id=11]
+[ext_resource path="res://textures/UI/main_menu_btn_quit_pressed.png" type="Texture" id=12]
+[ext_resource path="res://textures/UI/main_menu_btn_quit_hover.png" type="Texture" id=13]
+[ext_resource path="res://prefabs/menu_settings.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -23,6 +31,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 15
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 7 )
 
 [node name="main_menu" type="Node"]
 
@@ -51,27 +66,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="btn_play" type="TextureButton" parent="canvas"]
-
-anchor/left = 3
-anchor/top = 3
-anchor/right = 3
-anchor/bottom = 3
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 96.0
-margin/top = 21.0
-margin/right = -81.0
-margin/bottom = -31.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 3 )
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="btn_settings" type="TextureButton" parent="canvas"]
 
 anchor/left = 3
@@ -82,14 +76,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 76.0
-margin/top = -52.0
-margin/right = -60.0
-margin/bottom = -93.0
+margin/left = 46.0
+margin/top = -50.0
+margin/right = -44.0
+margin/bottom = -88.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 4 )
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -104,7 +100,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 640.0
 margin/bottom = 480.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 0
 __meta__ = {
@@ -128,17 +124,72 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 256.0
-margin/top = 417.0
-margin/right = 370.0
-margin/bottom = 454.0
+margin/left = 173.0
+margin/top = 380.0
+margin/right = 470.0
+margin/bottom = 396.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.609375, 0, 0.228516, 1 )
 text = "XXX"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="menu_settings" parent="." instance=ExtResource( 6 )]
+[node name="play_quit_button_box" type="HBoxContainer" parent="canvas"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 194.0
+margin/top = 211.0
+margin/right = 445.0
+margin/bottom = 262.0
+alignment = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="btn_play" type="TextureButton" parent="canvas/play_quit_button_box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 124.0
+margin/bottom = 51.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="btn_quit" type="TextureButton" parent="canvas/play_quit_button_box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 128.0
+margin/top = 0.0
+margin/right = 251.0
+margin/bottom = 51.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 11 )
+textures/pressed = ExtResource( 12 )
+textures/hover = ExtResource( 13 )
+params/resize_mode = 0
+params/stretch_mode = 3
+
+[node name="menu_settings" parent="." instance=ExtResource( 14 )]
 
 editor/display_folded = true
 

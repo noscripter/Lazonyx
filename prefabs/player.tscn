@@ -31,7 +31,7 @@ tracks/0/keys = {
 [sub_resource type="SampleLibrary" id=3]
 
 samples/Jump_00 = {
-"db": -3.03,
+"db": -32.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 4 )

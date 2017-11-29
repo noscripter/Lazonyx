@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=1]
+[gd_scene load_steps=25 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
@@ -40,24 +40,14 @@ extents = Vector2( 369.429, 10 )
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7.50961, 10 )
+extents = Vector2( 106.168, 27.0967 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 94.2916, 47.9609 )
-
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
 extents = Vector2( 101.643, 47.9609 )
 
-[sub_resource type="RectangleShape2D" id=8]
-
-custom_solver_bias = 0.0
-extents = Vector2( 95.7617, 47.9609 )
-
-[sub_resource type="SampleLibrary" id=9]
+[sub_resource type="SampleLibrary" id=7]
 
 samples/Collect_Point_00 = {
 "db": 0.0,
@@ -78,7 +68,7 @@ samples/Hit_02 = {
 "sample": ExtResource( 9 )
 }
 
-[sub_resource type="SampleLibrary" id=10]
+[sub_resource type="SampleLibrary" id=8]
 
 samples/Lazonyx_idea_v1 = {
 "db": 0.0,
@@ -117,12 +107,11 @@ __meta__ = {
 
 [node name="platforms" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( -2, 0 )
 
 [node name="see_saw7" parent="platforms" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 41.6695, 104.143 )
+transform/pos = Vector2( 41.6695, 105.47 )
 
 [node name="see_saw13" parent="platforms" instance=ExtResource( 3 )]
 
@@ -284,13 +273,12 @@ trigger = false
 _update_shape_index = 0
 
 [node name="floor_bit_left" type="StaticBody2D" parent="." groups=[
-"jump_surface",
+"jump_surfaces",
 ]]
 
-editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 207.676, 476.307 )
+shapes/0/transform = Matrix32( 1.06474, 0, 0, 1, 112.903, 482.923 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -301,19 +289,19 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="floor_bit_left"]
 
-transform/pos = Vector2( 207.676, 476.307 )
+transform/pos = Vector2( 112.903, 482.923 )
+transform/scale = Vector2( 1.06474, 1 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
 [node name="floor_bit_right" type="StaticBody2D" parent="." groups=[
-"jump_surface",
+"jump_surfaces",
 ]]
 
-editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 425.667, 475.332 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 517.554, 480.478 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -324,32 +312,9 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="floor_bit_right"]
 
-transform/pos = Vector2( 425.667, 475.332 )
+transform/pos = Vector2( 517.554, 480.478 )
 shape = SubResource( 5 )
 trigger = false
-_update_shape_index = 0
-
-[node name="goal_left" type="StaticBody2D" parent="." groups=[
-"goals",
-]]
-
-editor/display_folded = true
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 106.44, 513.937 )
-shapes/0/trigger = true
-collision/layers = 2
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="collision_shape" type="CollisionShape2D" parent="goal_left"]
-
-transform/pos = Vector2( 106.44, 513.937 )
-shape = SubResource( 6 )
-trigger = true
 _update_shape_index = 0
 
 [node name="goal_middle" type="StaticBody2D" parent="." groups=[
@@ -358,7 +323,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 316.225, 514.729 )
 shapes/0/trigger = true
 collision/layers = 2
@@ -371,43 +336,17 @@ bounce = 0.0
 [node name="collision_shape" type="CollisionShape2D" parent="goal_middle"]
 
 transform/pos = Vector2( 316.225, 514.729 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 trigger = true
 _update_shape_index = 0
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="goal_right" type="StaticBody2D" parent="." groups=[
-"goals",
-]]
-
-editor/display_folded = true
-input/pickable = true
-shapes/0/shape = SubResource( 8 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 528.668, 514.729 )
-shapes/0/trigger = true
-collision/layers = 2
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="collision_shape" type="CollisionShape2D" parent="goal_right"]
-
-transform/pos = Vector2( 528.668, 514.729 )
-shape = SubResource( 8 )
-trigger = true
-_update_shape_index = 0
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 9 )
+config/samples = SubResource( 7 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -424,7 +363,7 @@ default/chorus_send = 0.0
 [node name="music_player" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 10 )
+config/samples = SubResource( 8 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -456,7 +395,6 @@ offset = Vector2( 640, 480 )
 
 [node name="ammo_pickup_spawner" type="Node" parent="."]
 
-editor/display_folded = true
 script/script = ExtResource( 14 )
 
 [node name="ammo_spawn_point_1" type="Node2D" parent="ammo_pickup_spawner"]

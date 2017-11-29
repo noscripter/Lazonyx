@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/hud.gd" type="Script" id=1]
+[ext_resource path="res://fonts/slkscr.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
 
 [node name="hud" type="Node"]
 
@@ -20,13 +56,14 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 164.0
-margin/top = 12.0
-margin/right = 223.0
-margin/bottom = 26.0
+margin/left = 277.0
+margin/top = 25.0
+margin/right = 177.0
+margin/bottom = 45.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 3
+custom_constants/shadow_as_outline = 4
 text = "Score: XXX"
 percent_visible = 1.0
 lines_skipped = 0
@@ -39,10 +76,11 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 246.0
-margin/top = 12.0
-margin/right = 141.0
-margin/bottom = 26.0
+margin/left = 277.0
+margin/top = 10.0
+margin/right = 147.0
+margin/bottom = 27.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 3
@@ -58,11 +96,11 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 406.0
-margin/top = 11.0
-margin/right = 328.0
-margin/bottom = 25.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+margin/left = 597.0
+margin/top = 41.0
+margin/right = 188.0
+margin/bottom = 58.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 3
 text = "Top Score: XXX"
@@ -76,14 +114,16 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 338.0
+margin/left = 492.0
 margin/top = 10.0
-margin/right = 413.0
-margin/bottom = 24.0
+margin/right = 591.0
+margin/bottom = 27.0
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 3
 text = "Ammo: XXX"
+align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -94,14 +134,16 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 422.0
-margin/top = 11.0
-margin/right = 497.0
-margin/bottom = 25.0
+margin/left = 491.0
+margin/top = 25.0
+margin/right = 592.0
+margin/bottom = 42.0
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 3
 text = "Lives: XXX"
+align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/menu_settings.gd" type="Script" id=1]
 [ext_resource path="res://textures/UI/settings_menu_bg.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://textures/player.png" type="Texture" id=5]
 [ext_resource path="res://textures/UI/slider_v1.png" type="Texture" id=6]
 [ext_resource path="res://audio/music/imported/Lazonyx_idea_v1.smp" type="Sample" id=7]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/Wav/Hit_03.wav" type="Sample" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -49,6 +50,15 @@ samples/Lazonyx_idea_v1 = {
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 7 )
+}
+
+[sub_resource type="SampleLibrary" id=4]
+
+samples/Hit_03 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
 }
 
 [node name="menu_settings" type="Node"]
@@ -129,29 +139,6 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="slider_input_sensitivity" type="HSlider" parent="canvas"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 137.0
-margin/top = 187.0
-margin/right = 507.0
-margin/bottom = 196.0
-custom_icons/grabber = ExtResource( 5 )
-custom_styles/slider = SubResource( 2 )
-range/min = 0.0
-range/max = 1.0
-range/step = 0.01
-range/page = 0.0
-range/value = 0.5
-range/exp_edit = false
-range/rounded = false
-tick_count = 10
-ticks_on_borders = true
-focus_mode = 2
-
 [node name="slider_sound_volume" type="HSlider" parent="canvas"]
 
 focus/ignore_mouse = false
@@ -166,7 +153,7 @@ custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = SubResource( 2 )
 range/min = 0.0
 range/max = 1.0
-range/step = 0.01
+range/step = 0.05
 range/page = 0.0
 range/value = 1.0
 range/exp_edit = false
@@ -202,6 +189,23 @@ focus_mode = 2
 
 config/polyphony = 1
 config/samples = SubResource( 3 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+[node name="sample_player" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 4 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0

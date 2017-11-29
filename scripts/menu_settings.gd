@@ -1,9 +1,11 @@
 extends Node
 
 const MUSIC_BACKGROUND = "Lazonyx_idea_v1"
+const SOUND_EXAMPLE    = "Hit_03"
   
 onready var canvas              = get_node("canvas")
 onready var music_player        = get_node("music_player")
+onready var sample_player       = get_node("sample_player")
 onready var slider_sound_volume = canvas.get_node("slider_sound_volume")
 onready var slider_music_volume = canvas.get_node("slider_music_volume")
 onready var btn_return          = canvas.get_node("btn_return")
@@ -40,6 +42,8 @@ func _slider_music_volume_value_changed(value):
 	
 func _slider_sound_volume_value_changed(value):
 	print("sound value changed: " + str(value))
+	var voice_id = sample_player.play(SOUND_EXAMPLE)
+	sample_player.set_volume(voice_id, slider_sound_volume.get_value())
 	
 func _btn_return_pressed():
 	file_manager.save_sound_volume(slider_sound_volume.get_val())

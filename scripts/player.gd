@@ -97,7 +97,8 @@ func attempt_jump():
 func jump():
 	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
 	var voice_id = sample_player.play(SOUND_JUMP)
-	sample_player.set_volume(voice_id, get_parent().sound_volume)
+	var jump_sound_volume = 0.4
+	sample_player.set_volume(voice_id, get_parent().sound_volume * jump_sound_volume)
 
 func _body_enter(other_body):
 	if other_body.is_in_group("ammo_pickups"):
