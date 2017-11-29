@@ -37,17 +37,22 @@ func change_state(new_state):
 	var prev_state = state
 	if new_state == STATE_LEVEL:
 		if prev_state == STATE_LEFTDOWN:
-			sample_player.play(SOUND_SWING_UP)
+			#TODO get sound volume from centralised place
+			var voice_id = sample_player.play(SOUND_SWING_UP)
+			sample_player.set_volume(voice_id, get_parent().get_parent().sound_volume)
 			anim.play("leftdown_to_level")
 		elif prev_state == STATE_RIGHTDOWN:
-			sample_player.play(SOUND_SWING_UP)
+			var voice_id = sample_player.play(SOUND_SWING_UP)
+			sample_player.set_volume(voice_id, get_parent().get_parent().sound_volume)
 			anim.play("rightdown_to_level")
 	elif new_state == STATE_LEFTDOWN:
 		if prev_state == STATE_LEVEL:
-			sample_player.play(SOUND_SWING_DOWN)
+			var voice_id = sample_player.play(SOUND_SWING_DOWN)
+			sample_player.set_volume(voice_id, get_parent().get_parent().sound_volume)
 			anim.play("level_to_leftdown")
 	elif new_state == STATE_RIGHTDOWN:
 		if prev_state == STATE_LEVEL:
-			sample_player.play(SOUND_SWING_DOWN)
+			var voice_id = sample_player.play(SOUND_SWING_DOWN)
+			sample_player.set_volume(voice_id, get_parent().get_parent().sound_volume)
 			anim.play("level_to_rightdown")
 	state = new_state

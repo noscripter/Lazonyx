@@ -61,7 +61,8 @@ func shoot():
 	ammo -= 1
 	# TODO, calculate end pos if hit was empty
 	draw_laser(body.get_global_pos(), laser_end_point)
-	sample_player.play(SOUND_LASER)
+	var voice_id = sample_player.play(SOUND_LASER)
+	sample_player.set_volume(voice_id, get_parent().sound_volume)
 	emit_signal("fired_shot")
 	
 func _fixed_process(delta):
@@ -95,7 +96,8 @@ func attempt_jump():
 
 func jump():
 	body.set_linear_velocity(body.get_linear_velocity() + Vector2(0,-max_vertical_velocity))
-	sample_player.play(SOUND_JUMP)
+	var voice_id = sample_player.play(SOUND_JUMP)
+	sample_player.set_volume(voice_id, get_parent().sound_volume)
 
 func _body_enter(other_body):
 	if other_body.is_in_group("ammo_pickups"):

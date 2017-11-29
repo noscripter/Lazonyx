@@ -99,7 +99,10 @@ func pause_game():
 func unpause_game():
 	print("unpause game")
 	get_tree().set_pause(false)
-	music_player.play(MUSIC_BACKGROUND)
+	var voice_id = music_player.play(MUSIC_BACKGROUND)
+	music_player.set_volume(voice_id, music_volume)
+	music_volume = file_manager.load_music_volume()
+	sound_volume = file_manager.load_sound_volume()
 	menu_pause.hide()
 
 # deal with enemy death by player
@@ -144,7 +147,8 @@ func _orb_entered_goal(orb, goal):
 	# if it's the right goal for this orb
 	if orb.target_goal == goal.get_name():
 		
-		sample_player.play(SOUND_SCORE_POINT)
+		var voice_id = sample_player.play(SOUND_SCORE_POINT)
+		sample_player.set_volume(voice_id, sound_volume)
 		# increase score
 		current_score += points_per_goal
 		# calculate current level based on score
@@ -201,7 +205,8 @@ func deduct_life():
 	hud.set_lives(player.lives)
 
 func enemy_hit_player(enemy_body):
-	sample_player.play(SOUND_HIT_BY_ENEMY)
+	var voice_id = sample_player.play(SOUND_HIT_BY_ENEMY)
+	sample_player.set_volume(voice_id, sound_volume)
 	enemy_body.get_parent().explode()
 	deduct_life()
 		
