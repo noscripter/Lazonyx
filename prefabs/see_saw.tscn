@@ -224,8 +224,8 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 79.7184, 0 )
 
 [node name="body" type="KinematicBody2D" parent="left_hinge/right_hinge" groups=[
-"platforms",
 "jump_surfaces",
+"platforms",
 ]]
 
 transform/pos = Vector2( -39.8424, 0 )
@@ -240,9 +240,6 @@ collision/margin = 0.08
 [node name="sprite" type="Sprite" parent="left_hinge/right_hinge/body"]
 
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="collision_box" type="CollisionShape2D" parent="left_hinge/right_hinge/body"]
 

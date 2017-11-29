@@ -17,20 +17,20 @@
 [ext_resource path="res://textures/indicator.png" type="Texture" id=15]
 [ext_resource path="res://prefabs/menu_pause.tscn" type="PackedScene" id=16]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -136.946, -47.3506, 35.9085, -47.3506, 31.8656, 603.386, -140.772, 643.2 )
+points = Vector2Array( 614.731, -47.3499, 784.944, -50.6747, 786.226, 645.2, 614.067, 600.153 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 786.226, 645.2, -140.772, 643.2, 31.8656, 603.386, 609.159, 604.688 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 784.944, -50.6747, 786.226, 645.2, 609.159, 604.688, 608.765, -49.5667 )
+points = Vector2Array( 614.067, 600.153, 786.226, 645.2, -140.772, 643.2, 24.3643, 602.257 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 24.3643, 602.257, -140.772, 643.2, -136.946, -47.3506, 24.1298, -47.9145 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -40,12 +40,12 @@ extents = Vector2( 369.429, 10 )
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 106.168, 27.0967 )
+extents = Vector2( 110.117, 16.7924 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 101.643, 47.9609 )
+extents = Vector2( 100.814, 47.9609 )
 
 [sub_resource type="SampleLibrary" id=7]
 
@@ -107,6 +107,7 @@ __meta__ = {
 
 [node name="platforms" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -2, 0 )
 
 [node name="see_saw7" parent="platforms" instance=ExtResource( 3 )]
@@ -219,20 +220,19 @@ transform/pos = Vector2( 318.668, -17.6293 )
 transform/pos = Vector2( -26.1256, 258.616 )
 
 [node name="walls" type="StaticBody2D" parent="." groups=[
-"walls",
 "enemy_direction_switchers",
+"walls",
 ]]
 
-editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.32687, 1.32684 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 2 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/shape = SubResource( 10 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 1.32687, 1.32684 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 3 )
-shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/shape = SubResource( 11 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 1.32687, 1.32684 )
 shapes/2/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -243,14 +243,15 @@ bounce = 0.0
 
 [node name="collision_polygon" type="CollisionPolygon2D" parent="walls"]
 
+transform/pos = Vector2( 1.32687, 1.32684 )
 build_mode = 0
-polygon = Vector2Array( 31.8656, 603.386, 35.9085, -47.3506, -136.946, -47.3506, -140.772, 643.2, 786.226, 645.2, 784.944, -50.6747, 608.765, -49.5667, 609.159, 604.688 )
+polygon = Vector2Array( 24.3643, 602.257, 24.1298, -47.9145, -136.946, -47.3506, -140.772, 643.2, 786.226, 645.2, 784.944, -50.6747, 614.731, -47.3499, 614.067, 600.153 )
 shape_range = Vector2( 0, 2 )
 trigger = false
 
 [node name="ceilings" type="StaticBody2D" parent="." groups=[
-"walls",
 "enemy_direction_switchers",
+"walls",
 ]]
 
 editor/display_folded = true
@@ -278,7 +279,7 @@ _update_shape_index = 0
 
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1.06474, 0, 0, 1, 112.903, 482.923 )
+shapes/0/transform = Matrix32( 1.06474, 0, 0, 1, 104.278, 474.962 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -289,7 +290,7 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="floor_bit_left"]
 
-transform/pos = Vector2( 112.903, 482.923 )
+transform/pos = Vector2( 104.278, 474.962 )
 transform/scale = Vector2( 1.06474, 1 )
 shape = SubResource( 5 )
 trigger = false
@@ -301,7 +302,7 @@ _update_shape_index = 0
 
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 517.554, 480.478 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 527.505, 473.995 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -312,7 +313,7 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="floor_bit_right"]
 
-transform/pos = Vector2( 517.554, 480.478 )
+transform/pos = Vector2( 527.505, 473.995 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
@@ -321,10 +322,9 @@ _update_shape_index = 0
 "goals",
 ]]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 316.225, 514.729 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 319.542, 517.383 )
 shapes/0/trigger = true
 collision/layers = 2
 collision/mask = 1
@@ -335,13 +335,10 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="goal_middle"]
 
-transform/pos = Vector2( 316.225, 514.729 )
+transform/pos = Vector2( 319.542, 517.383 )
 shape = SubResource( 6 )
 trigger = true
 _update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 
@@ -520,6 +517,10 @@ editor/display_folded = true
 [node name="canvas" parent="menu_pause"]
 
 offset = Vector2( 1000, 1000 )
+
+[node name="btn_settings" parent="menu_pause/canvas/container_btns"]
+
+margin/right = 271.0
 
 
 [editable path="menu_settings"]
