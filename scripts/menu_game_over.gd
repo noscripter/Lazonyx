@@ -21,6 +21,7 @@ func show():
 	canvas.set_offset(OFFSET_SHOW)
 
 func _btn_menu_main_pressed():
+	print("game over menu main menu button pressed")
 	emit_signal("btn_menu_main_pressed")
 	
 func set_score(score):

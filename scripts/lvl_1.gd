@@ -1,7 +1,7 @@
 extends Node
 
 const SOUND_SCORE_POINT  = "Collect_Point_00"
-const SOUND_HIT_BY_ENEMY = "Hit_02"
+const SOUND_HIT_BY_ENEMY = "Hit_03"
 const MUSIC_BACKGROUND   = "lazonyx_idea_2_v2"
 
 #game
@@ -237,7 +237,7 @@ func game_over():
 	menu_game_over.set_score_top(top_score)
 	
 	menu_game_over.show()
-	pause_game()
+	get_tree().set_pause(true)
 
 func show_settings_menu():
 	menu_settings.show()

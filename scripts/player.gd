@@ -2,6 +2,8 @@ extends Node2D
 
 const SOUND_LASER       = "laser1"
 const SOUND_JUMP        = "Jump_00"
+const SOUND_FIRENOAMMO  = "Hit_01"
+const SOUND_PICKUP_AMMO = "Shoot_02"
 
 export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
@@ -32,6 +34,10 @@ func _input(event):
 	if event.is_action_pressed("shoot"):
 		if ammo > 0:
 			should_shoot = true
+		else:
+			print("playing click")
+			var voice_id = sample_player.play(SOUND_FIRENOAMMO)
+			sample_player.set_volume(voice_id, get_parent().sound_volume)
 	if event.is_action_pressed("jump"):
 		jump_button_pressed = true
 
@@ -61,6 +67,9 @@ func shoot():
 	draw_laser(body.get_global_pos(), laser_end_point)
 	var voice_id = sample_player.play(SOUND_LASER)
 	sample_player.set_volume(voice_id, get_parent().sound_volume)
+	if ammo < 1:
+		var voice_id = sample_player.play(SOUND_FIRENOAMMO)
+		sample_player.set_volume(voice_id, get_parent().sound_volume)
 	emit_signal("fired_shot")
 	
 func _fixed_process(delta):
@@ -101,6 +110,8 @@ func jump():
 func _body_enter(other_body):
 	if other_body.is_in_group("ammo_pickups"):
 		get_parent().player_touched_ammo_pickup(self, other_body)
+		var voice_id = sample_player.play(SOUND_PICKUP_AMMO)
+		sample_player.set_volume(voice_id, get_parent().sound_volume)
 	if other_body.is_in_group("enemies"):
 		get_parent().enemy_hit_player(other_body)
 	if other_body.is_in_group("goals"):
