@@ -2,12 +2,14 @@ extends Node
 
 const SOUND_SCORE_POINT  = "Collect_Point_00"
 const SOUND_HIT_BY_ENEMY = "Hit_02"
-const MUSIC_BACKGROUND   = "Lazonyx_idea_v1"
+const MUSIC_BACKGROUND   = "lazonyx_idea_2_v2"
 
 #game
 var ammo_per_pickup = 10
 var max_number_of_enemies = 1
 var time_between_enemy_spawns = 1.0
+var time_before_level_increase = 20.0
+var time_to_increase_level = time_before_level_increase
 var points_per_goal = 1
 var starting_lives = 1000
 
@@ -38,6 +40,7 @@ var current_score   = 0
 var top_score       = 0
 # array of objects for laser to ignore
 var laser_ignore_objects = [player]
+var music_voice_id
 
 
 func _ready():
@@ -50,6 +53,7 @@ func _ready():
 	menu_pause.btn_resume.connect("pressed", self, "_menu_pause_btn_resume_pressed")
 	menu_pause.btn_settings.connect("pressed", self, "_menu_pause_btn_settings_pressed")
 	menu_settings.connect("btn_return_pressed", self, "_menu_settings_btn_return_pressed")
+	menu_settings.connect("music_volume_value_changed", self, "_music_volume_value_changed")
 	
 	# hide menus
 	menu_settings. hide()
@@ -69,7 +73,7 @@ func _ready():
 	#audio
 	sound_volume = file_manager.load_sound_volume()
 	music_volume = file_manager.load_music_volume()
-	music_player.play(MUSIC_BACKGROUND)
+	music_voice_id = music_player.play(MUSIC_BACKGROUND)
 	
 	set_process(true)
 	set_process_input(true)
@@ -82,9 +86,21 @@ func _process(delta):
 	
 	if game_time >= time_to_spawn_enemy:
 		attempt_spawn_enemy()
+		time_to_spawn_enemy = game_time + time_between_enemy_spawns
 		
-	time_to_spawn_enemy = game_time + time_between_enemy_spawns
+	if game_time >= time_to_increase_level:
+		max_number_of_enemies += 1
+		current_level += 1
+		hud.set_level(current_level)
+		
+		time_to_increase_level = game_time + time_before_level_increase
+	
+
 	pass
+	
+func _music_volume_value_changed(value):
+	if music_voice_id != null:
+		music_player.set_volume(music_voice_id, value)
 
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -92,15 +108,12 @@ func _input(event):
 		
 func pause_game():
 	get_tree().set_pause(true)
-	music_player.stop_all()
 	menu_pause.show()
 	
 	
 func unpause_game():
 	print("unpause game")
 	get_tree().set_pause(false)
-	var voice_id = music_player.play(MUSIC_BACKGROUND)
-	music_player.set_volume(voice_id, music_volume)
 	music_volume = file_manager.load_music_volume()
 	sound_volume = file_manager.load_sound_volume()
 	menu_pause.hide()
@@ -152,7 +165,6 @@ func _orb_entered_goal(orb, goal):
 		# increase score
 		current_score += points_per_goal
 		# calculate current level based on score
-		current_level = floor(current_score/10) + 1
 		# increase enemy count in line with level increase
 		max_number_of_enemies = current_level
 		# update HUD
@@ -196,6 +208,9 @@ func attempt_spawn_enemy():
 		var new_enemy = enemy_spawner.spawn_enemy()
 		new_enemy.connect("entered_goal", self, "_enemy_entered_goal")
 		number_of_enemies += 1
+		
+	current_level = max_number_of_enemies
+	hud.set_level(current_level)
 
 func deduct_life():
 	player.lives -= 1

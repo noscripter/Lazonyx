@@ -6,31 +6,31 @@
 [ext_resource path="res://prefabs/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/enemy_spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://prefabs/debug_circle.tscn" type="PackedScene" id=6]
-[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Collect_Point_00.wav" type="Sample" id=7]
-[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Hit_00.wav" type="Sample" id=8]
-[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Hit_02.wav" type="Sample" id=9]
-[ext_resource path="res://audio/music/Lazonyx_idea_v1.wav" type="Sample" id=10]
-[ext_resource path="res://prefabs/hud.tscn" type="PackedScene" id=11]
-[ext_resource path="res://prefabs/menu_settings.tscn" type="PackedScene" id=12]
-[ext_resource path="res://prefabs/menu_game_over.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scripts/spawner_ammo_pickup.gd" type="Script" id=14]
-[ext_resource path="res://textures/indicator.png" type="Texture" id=15]
-[ext_resource path="res://prefabs/menu_pause.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefabs/hud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefabs/menu_settings.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefabs/menu_game_over.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/spawner_ammo_pickup.gd" type="Script" id=10]
+[ext_resource path="res://textures/indicator.png" type="Texture" id=11]
+[ext_resource path="res://prefabs/menu_pause.tscn" type="PackedScene" id=12]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Collect_Point_00.wav" type="Sample" id=13]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Hit_00.wav" type="Sample" id=14]
+[ext_resource path="res://audio/sounds/8_bit_sound_library/wav/Hit_02.wav" type="Sample" id=15]
+[ext_resource path="res://audio/music/imported/lazonyx_idea_2_v2.smp" type="Sample" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 614.731, -47.3499, 784.944, -50.6747, 786.226, 645.2, 614.067, 600.153 )
+points = Vector2Array( 605.892, -49.8932, 784.944, -50.6747, 786.226, 645.2, 607.214, 598.637 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 614.067, 600.153, 786.226, 645.2, -140.772, 643.2, 24.3643, 602.257 )
+points = Vector2Array( 607.214, 598.637, 786.226, 645.2, -140.772, 643.2, 30.7107, 601.311 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 24.3643, 602.257, -140.772, 643.2, -136.946, -47.3506, 24.1298, -47.9145 )
+points = Vector2Array( 30.7107, 601.311, -140.772, 643.2, -136.946, -47.3506, 29.2405, -47.7797 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -53,28 +53,28 @@ samples/Collect_Point_00 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 7 )
+"sample": ExtResource( 13 )
 }
 samples/Hit_00 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 8 )
+"sample": ExtResource( 14 )
 }
 samples/Hit_02 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 9 )
+"sample": ExtResource( 15 )
 }
 
 [sub_resource type="SampleLibrary" id=8]
 
-samples/Lazonyx_idea_v1 = {
+samples/lazonyx_idea_2_v2 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 10 )
+"sample": ExtResource( 16 )
 }
 
 [node name="lvl_1" type="Node"]
@@ -209,6 +209,7 @@ transform/pos = Vector2( 521.877, 392.944 )
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 58.3233, 362.324 )
+max_vertical_velocity = 350
 lives = 3
 
 [node name="enemy_spawner" parent="." instance=ExtResource( 5 )]
@@ -245,7 +246,7 @@ bounce = 0.0
 
 transform/pos = Vector2( 1.32687, 1.32684 )
 build_mode = 0
-polygon = Vector2Array( 24.3643, 602.257, 24.1298, -47.9145, -136.946, -47.3506, -140.772, 643.2, 786.226, 645.2, 784.944, -50.6747, 614.731, -47.3499, 614.067, 600.153 )
+polygon = Vector2Array( 30.7107, 601.311, 29.2405, -47.7797, -136.946, -47.3506, -140.772, 643.2, 786.226, 645.2, 784.944, -50.6747, 605.892, -49.8932, 607.214, 598.637 )
 shape_range = Vector2( 0, 2 )
 trigger = false
 
@@ -277,6 +278,7 @@ _update_shape_index = 0
 "jump_surfaces",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1.06474, 0, 0, 1, 104.278, 474.962 )
@@ -300,6 +302,7 @@ _update_shape_index = 0
 "jump_surfaces",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 527.505, 473.995 )
@@ -324,7 +327,7 @@ _update_shape_index = 0
 
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 319.542, 517.383 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 319.542, 530.383 )
 shapes/0/trigger = true
 collision/layers = 2
 collision/mask = 1
@@ -335,10 +338,161 @@ bounce = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="goal_middle"]
 
-transform/pos = Vector2( 319.542, 517.383 )
+transform/pos = Vector2( 319.542, 530.383 )
 shape = SubResource( 6 )
 trigger = true
 _update_shape_index = 0
+
+[node name="hud" parent="." instance=ExtResource( 7 )]
+
+[node name="menu_settings" parent="." instance=ExtResource( 8 )]
+
+editor/display_folded = true
+
+[node name="canvas" parent="menu_settings"]
+
+offset = Vector2( 1000, 1000 )
+
+[node name="menu_game_over" parent="." instance=ExtResource( 9 )]
+
+editor/display_folded = true
+
+[node name="canvas" parent="menu_game_over"]
+
+offset = Vector2( 640, 480 )
+
+[node name="ammo_pickup_spawner" type="Node" parent="."]
+
+editor/display_folded = true
+script/script = ExtResource( 10 )
+
+[node name="ammo_spawn_point_1" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 79.0076, 93.3232 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_1"]
+
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_2" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 271.232, 93.8874 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_2"]
+
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_3" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 465.086, 93.0729 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_3"]
+
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_4" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 177.563, 186.742 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_4"]
+
+transform/pos = Vector2( 0, 2.39497 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_5" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 368.159, 185.113 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_5"]
+
+transform/pos = Vector2( 0, 2.39497 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_6" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 560.384, 188.371 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_6"]
+
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_7" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 460.199, 283.669 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_7"]
+
+transform/pos = Vector2( 0, 1.79623 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_8" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 268.789, 282.854 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_8"]
+
+transform/pos = Vector2( 0, 1.79623 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_9" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 79.8221, 282.854 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_9"]
+
+transform/pos = Vector2( 0, 1.79623 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_10" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 175.12, 374.079 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_10"]
+
+transform/pos = Vector2( 0, 7.18488 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_11" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 365.716, 378.966 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_11"]
+
+transform/pos = Vector2( 0.598724, 3.59244 )
+texture = ExtResource( 11 )
+
+[node name="ammo_spawn_point_12" type="Node2D" parent="ammo_pickup_spawner"]
+
+editor/display_folded = true
+transform/pos = Vector2( 559.569, 374.894 )
+
+[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_12"]
+
+transform/pos = Vector2( 0, 7.18488 )
+texture = ExtResource( 11 )
+
+[node name="menu_pause" parent="." instance=ExtResource( 12 )]
+
+editor/display_folded = true
+
+[node name="canvas" parent="menu_pause"]
+
+offset = Vector2( 1000, 1000 )
+
+[node name="btn_settings" parent="menu_pause/canvas/container_btns"]
+
+margin/right = 271.0
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 
@@ -373,154 +527,6 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
-
-[node name="hud" parent="." instance=ExtResource( 11 )]
-
-[node name="menu_settings" parent="." instance=ExtResource( 12 )]
-
-[node name="canvas" parent="menu_settings"]
-
-offset = Vector2( 1000, 1000 )
-
-[node name="menu_game_over" parent="." instance=ExtResource( 13 )]
-
-editor/display_folded = true
-
-[node name="canvas" parent="menu_game_over"]
-
-offset = Vector2( 640, 480 )
-
-[node name="ammo_pickup_spawner" type="Node" parent="."]
-
-script/script = ExtResource( 14 )
-
-[node name="ammo_spawn_point_1" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 79.0076, 93.3232 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_1"]
-
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_2" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 271.232, 93.8874 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_2"]
-
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_3" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 465.086, 93.0729 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_3"]
-
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_4" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 177.563, 186.742 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_4"]
-
-transform/pos = Vector2( 0, 2.39497 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_5" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 368.159, 185.113 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_5"]
-
-transform/pos = Vector2( 0, 2.39497 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_6" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 560.384, 188.371 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_6"]
-
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_7" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 460.199, 283.669 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_7"]
-
-transform/pos = Vector2( 0, 1.79623 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_8" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 268.789, 282.854 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_8"]
-
-transform/pos = Vector2( 0, 1.79623 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_9" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 79.8221, 282.854 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_9"]
-
-transform/pos = Vector2( 0, 1.79623 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_10" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 175.12, 374.079 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_10"]
-
-transform/pos = Vector2( 0, 7.18488 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_11" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 365.716, 378.966 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_11"]
-
-transform/pos = Vector2( 0.598724, 3.59244 )
-texture = ExtResource( 15 )
-
-[node name="ammo_spawn_point_12" type="Node2D" parent="ammo_pickup_spawner"]
-
-editor/display_folded = true
-transform/pos = Vector2( 559.569, 374.894 )
-
-[node name="sprite_spawn_point_indicator" type="Sprite" parent="ammo_pickup_spawner/ammo_spawn_point_12"]
-
-transform/pos = Vector2( 0, 7.18488 )
-texture = ExtResource( 15 )
-
-[node name="menu_pause" parent="." instance=ExtResource( 16 )]
-
-editor/display_folded = true
-
-[node name="canvas" parent="menu_pause"]
-
-offset = Vector2( 1000, 1000 )
-
-[node name="btn_settings" parent="menu_pause/canvas/container_btns"]
-
-margin/right = 271.0
 
 
 [editable path="menu_settings"]

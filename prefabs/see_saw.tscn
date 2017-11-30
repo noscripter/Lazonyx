@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/see_saw.gd" type="Script" id=1]
 [ext_resource path="res://textures/see_saw.png" type="Texture" id=2]
-[ext_resource path="res://textures/level_button_v1.png" type="Texture" id=3]
-[ext_resource path="res://audio/sounds/swosh.wav" type="Sample" id=4]
+[ext_resource path="res://audio/sounds/swosh.wav" type="Sample" id=3]
+[ext_resource path="res://scripts/see_saw_click_area.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -210,8 +210,13 @@ samples/swosh = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 4 )
+"sample": ExtResource( 3 )
 }
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 22.6667, 43.805 )
 
 [node name="see_saw" type="Node2D"]
 
@@ -267,48 +272,6 @@ playback/speed = 2.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="btn_left" type="TextureButton" parent="."]
-
-visibility/opacity = 0.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -15.0
-margin/top = -23.0
-margin/right = 31.0
-margin/bottom = 65.0
-toggle_mode = false
-enabled_focus_mode = 0
-shortcut = null
-textures/normal = ExtResource( 3 )
-params/resize_mode = 1
-params/stretch_mode = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="btn_right" type="TextureButton" parent="."]
-
-visibility/opacity = 0.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 32.0
-margin/top = -23.0
-margin/right = 80.0
-margin/bottom = 64.0
-toggle_mode = false
-enabled_focus_mode = 0
-shortcut = null
-textures/normal = ExtResource( 3 )
-params/resize_mode = 1
-params/stretch_mode = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="block_left" type="StaticBody2D" parent="." groups=[
 "jump_surfaces",
 ]]
@@ -336,6 +299,7 @@ _update_shape_index = 0
 "jump_surfaces",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 84.138, 0.128513 )
@@ -370,5 +334,45 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
+
+[node name="click_area_left" type="Area2D" parent="."]
+
+transform/pos = Vector2( 8.1691, 0 )
+input/pickable = true
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 8.06789, 20.147 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 4 )
+
+[node name="collision_shape" type="CollisionShape2D" parent="click_area_left"]
+
+transform/pos = Vector2( 8.06789, 20.147 )
+shape = SubResource( 8 )
+trigger = false
+_update_shape_index = 0
+
+[node name="click_area_right" type="Area2D" parent="."]
+
+transform/pos = Vector2( 56.3932, 0 )
+input/pickable = true
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 7.01382, 20.147 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 4 )
+
+[node name="collision_shape" type="CollisionShape2D" parent="click_area_right"]
+
+transform/pos = Vector2( 7.01382, 20.147 )
+shape = SubResource( 8 )
+trigger = false
+_update_shape_index = 0
 
 

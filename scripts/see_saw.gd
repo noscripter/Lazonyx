@@ -17,17 +17,24 @@ const STATE_RIGHTDOWN = 2
 var state = STATE_LEVEL
 
 func _ready():
-	get_node("btn_right").connect("pressed", self, "_btn_right_pressed")
-	get_node("btn_left"). connect("pressed", self, "_btn_left_pressed")
-	pass
 
-func _btn_left_pressed():
+	pass
+	
+func click_area_clicked(area_name):
+	if area_name == "click_area_left":
+		btn_left_pressed()
+	elif area_name == "click_area_right":
+		btn_right_pressed()
+	else:
+		print("unknown area clicked")
+
+func btn_left_pressed():
 	if state == STATE_LEVEL:
 		change_state(STATE_LEFTDOWN)
 	elif state == STATE_RIGHTDOWN or state == STATE_LEFTDOWN:
 		change_state(STATE_LEVEL)
 	
-func _btn_right_pressed():
+func btn_right_pressed():
 	if state == STATE_LEVEL:
 		change_state(STATE_RIGHTDOWN)
 	elif state == STATE_RIGHTDOWN or state == STATE_LEFTDOWN:

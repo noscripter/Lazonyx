@@ -3,10 +3,9 @@ extends Node2D
 const SOUND_LASER       = "laser1"
 const SOUND_JUMP        = "Jump_00"
 
-export var jump_force = Vector2(0,-450)
 export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200
-export var max_vertical_velocity = 450
+export var max_vertical_velocity = 350
 export var lives = 0
 export var feet_distance = 20
 export var ammo = 0
