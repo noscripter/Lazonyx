@@ -14,6 +14,7 @@ onready var music_player    = get_node("music_player")
 var music_voice_id = null
 
 func _ready():
+	get_tree().set_pause(false)
 	btn_play.connect     ("pressed", self, "_btn_play_pressed")
 	btn_quit.connect     ("pressed", self, "_btn_quit_pressed")
 	btn_settings.connect ("pressed", self, "_btn_settings_pressed")

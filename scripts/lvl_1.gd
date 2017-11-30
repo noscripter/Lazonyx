@@ -11,7 +11,7 @@ var time_between_enemy_spawns = 1.0
 var time_before_level_increase = 20.0
 var time_to_increase_level = time_before_level_increase
 var points_per_goal = 10
-var starting_lives = 1000
+var starting_lives = 3
 
 #audio
 
@@ -237,6 +237,7 @@ func game_over():
 	menu_game_over.set_score_top(top_score)
 	
 	menu_game_over.show()
+	pause_game()
 
 func show_settings_menu():
 	menu_settings.show()

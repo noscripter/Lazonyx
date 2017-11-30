@@ -24,7 +24,7 @@ func _btn_menu_main_pressed():
 	emit_signal("btn_menu_main_pressed")
 	
 func set_score(score):
-	label_score.set_text(str(score))
+	label_score.set_text("SCORE: " + str(score))
 
 func set_score_top(score):
-	label_score_top.set_text(str(score))
+	label_score_top.set_text("TOP SCORE: " + str(score))

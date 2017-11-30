@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/menu_game_over.gd" type="Script" id=1]
 [ext_resource path="res://textures/UI/game_over_menu_bg.png" type="Texture" id=2]
-[ext_resource path="res://textures/UI/game_over_menu_btn_main_menu.png" type="Texture" id=3]
+[ext_resource path="res://textures/UI/btn_main_menu.png" type="Texture" id=3]
 [ext_resource path="res://textures/black16x16.png" type="Texture" id=4]
+[ext_resource path="res://fonts/slkscr.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -21,6 +22,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 30
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 5 )
 
 [node name="menu_game_over" type="Node"]
 
@@ -59,10 +67,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 69.0
-margin/top = -154.0
-margin/right = -67.0
-margin/bottom = -195.0
+margin/left = 50.0
+margin/top = -129.0
+margin/right = -50.0
+margin/bottom = -167.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -105,11 +113,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 230.0
-margin/top = 229.0
-margin/right = 383.0
-margin/bottom = 264.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+margin/left = 205.0
+margin/top = 226.0
+margin/right = 436.0
+margin/bottom = 257.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0117188, 0.768372, 1, 1 )
 text = "XXX"
 align = 1
 percent_visible = 1.0
@@ -122,11 +131,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 230.0
-margin/top = 322.0
-margin/right = 383.0
-margin/bottom = 357.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+margin/left = 205.0
+margin/top = 292.0
+margin/right = 436.0
+margin/bottom = 323.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0.679688, 1 )
 text = "XXX"
 align = 1
 percent_visible = 1.0
