@@ -1,8 +1,9 @@
 extends Node
 
-onready var canvas       = get_node("canvas")
-onready var btn_resume   = canvas.get_node("container_btns/btn_resume")
-onready var btn_settings = canvas.get_node("container_btns/btn_settings")
+onready var canvas        = get_node("canvas")
+onready var btn_resume    = canvas.get_node("container_btns/btn_resume")
+onready var btn_settings  = canvas.get_node("container_btns/btn_settings")
+onready var btn_main_menu = canvas.get_node("container_btns/btn_main_menu")
 
 
 const OFFSET_HIDE = Vector2(1000,1000)

@@ -3,7 +3,6 @@ extends Node
 const SOUND_EXAMPLE    = "Collect_Point_00"
   
 onready var canvas              = get_node("canvas")
-onready var music_player        = get_node("music_player")
 onready var sample_player       = get_node("sample_player")
 onready var slider_sound_volume = canvas.get_node("slider_sound_volume")
 onready var slider_music_volume = canvas.get_node("slider_music_volume")

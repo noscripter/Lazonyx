@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/UI/settings_menu_bg.png" type="Texture" id=2]
 [ext_resource path="res://textures/UI/btn_return.png" type="Texture" id=3]
 [ext_resource path="res://textures/black16x16.png" type="Texture" id=4]
-[ext_resource path="res://textures/player.png" type="Texture" id=5]
+[ext_resource path="res://textures/UI/slider_handle.png" type="Texture" id=5]
 [ext_resource path="res://textures/UI/slider_v1.png" type="Texture" id=6]
 [ext_resource path="res://audio/sounds/8_bit_sound_library/Wav/Collect_Point_00.wav" type="Sample" id=7]
 [ext_resource path="res://audio/sounds/8_bit_sound_library/Wav/Hit_03.wav" type="Sample" id=8]
@@ -96,10 +96,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 89.0
-margin/top = -158.0
-margin/right = -88.0
-margin/bottom = -210.0
+margin/left = 46.0
+margin/top = -139.0
+margin/right = -44.0
+margin/bottom = -177.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -143,9 +143,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 139.0
-margin/top = 275.0
+margin/top = 260.0
 margin/right = 509.0
-margin/bottom = 284.0
+margin/bottom = 264.0
+custom_icons/grabber_hilite = ExtResource( 5 )
 custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = SubResource( 2 )
 range/min = 0.0
@@ -155,8 +156,8 @@ range/page = 0.0
 range/value = 1.0
 range/exp_edit = false
 range/rounded = false
-tick_count = 10
-ticks_on_borders = true
+tick_count = 0
+ticks_on_borders = false
 focus_mode = 2
 
 [node name="slider_music_volume" type="HSlider" parent="canvas"]
@@ -165,21 +166,22 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 140.0
-margin/top = 351.0
-margin/right = 510.0
-margin/bottom = 360.0
+margin/left = 139.0
+margin/top = 339.0
+margin/right = 509.0
+margin/bottom = 343.0
+custom_icons/grabber_hilite = ExtResource( 5 )
 custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = SubResource( 2 )
 range/min = 0.0
 range/max = 1.0
-range/step = 0.01
+range/step = 0.05
 range/page = 0.0
 range/value = 1.0
 range/exp_edit = false
 range/rounded = false
-tick_count = 10
-ticks_on_borders = true
+tick_count = 0
+ticks_on_borders = false
 focus_mode = 2
 
 [node name="sample_player" type="SamplePlayer" parent="."]

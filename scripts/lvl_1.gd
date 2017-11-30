@@ -10,7 +10,7 @@ var max_number_of_enemies = 1
 var time_between_enemy_spawns = 1.0
 var time_before_level_increase = 20.0
 var time_to_increase_level = time_before_level_increase
-var points_per_goal = 1
+var points_per_goal = 10
 var starting_lives = 1000
 
 #audio
@@ -51,6 +51,7 @@ func _ready():
 	player.lives = starting_lives
 	menu_game_over.connect("btn_menu_main_pressed", self, "_menu_game_over_btn_menu_main_pressed")
 	menu_pause.btn_resume.connect("pressed", self, "_menu_pause_btn_resume_pressed")
+	menu_pause.btn_main_menu.connect("pressed", self, "_menu_pause_btn_main_menu_pressed")
 	menu_pause.btn_settings.connect("pressed", self, "_menu_pause_btn_settings_pressed")
 	menu_settings.connect("btn_return_pressed", self, "_menu_settings_btn_return_pressed")
 	menu_settings.connect("music_volume_value_changed", self, "_music_volume_value_changed")
@@ -74,6 +75,7 @@ func _ready():
 	sound_volume = file_manager.load_sound_volume()
 	music_volume = file_manager.load_music_volume()
 	music_voice_id = music_player.play(MUSIC_BACKGROUND)
+	music_player.set_volume(music_voice_id, music_volume)
 	
 	set_process(true)
 	set_process_input(true)
@@ -252,6 +254,10 @@ func _menu_pause_btn_resume_pressed():
 func _menu_pause_btn_settings_pressed():
 	print("settings button pressed")
 	show_settings_menu()
+	
+func _menu_pause_btn_main_menu_pressed():
+	unpause_game()
+	stage_manager.load_level(stage_manager.MENU_MAIN)
 
 func _menu_settings_btn_return_pressed():
 	menu_settings.hide()
