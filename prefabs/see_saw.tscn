@@ -229,8 +229,8 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 79.7184, 0 )
 
 [node name="body" type="KinematicBody2D" parent="left_hinge/right_hinge" groups=[
-"jump_surfaces",
 "platforms",
+"jump_surfaces",
 ]]
 
 transform/pos = Vector2( -39.8424, 0 )
@@ -337,7 +337,7 @@ default/chorus_send = 0.0
 
 [node name="click_area_left" type="Area2D" parent="."]
 
-transform/pos = Vector2( 8.1691, 0 )
+transform/pos = Vector2( 8.37845, 0.104675 )
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 8.06789, 20.147 )

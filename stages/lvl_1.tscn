@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=1]
+[gd_scene load_steps=29 format=1]
 
 [ext_resource path="res://scripts/lvl_1.gd" type="Script" id=1]
 [ext_resource path="res://textures/lvl1_bg.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://audio/sounds/8_bit_sound_library/wav/collect_point_01.wav" type="Sample" id=17]
 [ext_resource path="res://audio/sounds/8_bit_sound_library/wav/hit_03.wav" type="Sample" id=18]
 [ext_resource path="res://audio/music/imported/lazonyx_idea_2_v2.smp" type="Sample" id=19]
+[ext_resource path="res://prefabs/menu_controls.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -541,7 +542,14 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
+[node name="menu_controls" parent="." instance=ExtResource( 20 )]
+
+[node name="canvas" parent="menu_controls"]
+
+offset = Vector2( -640, 0 )
+
 
 [editable path="menu_settings"]
 [editable path="menu_game_over"]
 [editable path="menu_pause"]
+[editable path="menu_controls"]

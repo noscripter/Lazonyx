@@ -7,7 +7,9 @@ onready var anim            = canvas.get_node("anim")
 onready var btn_play        = canvas.get_node("play_quit_button_box/btn_play")
 onready var btn_quit        = canvas.get_node("play_quit_button_box/btn_quit")
 onready var btn_settings    = canvas.get_node("btn_settings")
+onready var btn_controls    = canvas.get_node("btn_controls")
 onready var menu_settings   = get_node("menu_settings")
+onready var menu_controls   = get_node("menu_controls")
 onready var label_score_top = canvas.get_node("label_score_top")
 onready var music_player    = get_node("music_player")
 
@@ -18,7 +20,9 @@ func _ready():
 	btn_play.connect     ("pressed", self, "_btn_play_pressed")
 	btn_quit.connect     ("pressed", self, "_btn_quit_pressed")
 	btn_settings.connect ("pressed", self, "_btn_settings_pressed")
+	btn_controls.connect ("pressed", self, "_btn_controls_pressed")
 	menu_settings.connect("music_volume_value_changed", self, "_music_volume_value_changed")
+	menu_controls.btn_return.connect("pressed", self, "_menu_controls_btn_return_pressed")
 	menu_settings.hide()
 	var menu_settings_btn_return = menu_settings.get_node("canvas").get_node("btn_return")
 	menu_settings_btn_return.connect("pressed", self, "_menu_settings_btn_return_pressed")
@@ -40,9 +44,15 @@ func _btn_quit_pressed():
 	
 func _btn_settings_pressed():
 	menu_settings.show()
+	
+func _btn_controls_pressed():
+	menu_controls.show()
 
 func _menu_settings_btn_return_pressed():
 	menu_settings.hide()
+	
+func _menu_controls_btn_return_pressed():
+	menu_controls.hide()
 	
 func set_top_score(score):
 	label_score_top.set_text("TOP SCORE: " + str(score))

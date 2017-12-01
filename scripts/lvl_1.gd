@@ -22,6 +22,7 @@ var sound_volume = 1.0
 # get references to children
 onready var hud                 = get_node("hud")
 onready var menu_settings       = get_node("menu_settings")
+onready var menu_controls       = get_node("menu_controls")
 onready var menu_game_over      = get_node("menu_game_over")
 onready var menu_pause          = get_node("menu_pause")
 onready var player              = get_node("player")
@@ -54,6 +55,8 @@ func _ready():
 	menu_pause.btn_resume.connect("pressed", self, "_menu_pause_btn_resume_pressed")
 	menu_pause.btn_main_menu.connect("pressed", self, "_menu_pause_btn_main_menu_pressed")
 	menu_pause.btn_settings.connect("pressed", self, "_menu_pause_btn_settings_pressed")
+	menu_pause.btn_controls.connect("pressed", self, "_menu_pause_btn_controls_pressed")
+	menu_controls.btn_return.connect("pressed", self, "_menu_controls_btn_return_pressed")
 	menu_settings.connect("btn_return_pressed", self, "_menu_settings_btn_return_pressed")
 	menu_settings.connect("music_volume_value_changed", self, "_music_volume_value_changed")
 	
@@ -266,6 +269,12 @@ func _menu_pause_btn_settings_pressed():
 func _menu_pause_btn_main_menu_pressed():
 	unpause_game()
 	stage_manager.load_level(stage_manager.MENU_MAIN)
+	
+func _menu_pause_btn_controls_pressed():
+	menu_controls.show()
 
 func _menu_settings_btn_return_pressed():
 	menu_settings.hide()
+	
+func _menu_controls_btn_return_pressed():
+	menu_controls.hide()
