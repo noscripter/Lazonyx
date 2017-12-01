@@ -3,7 +3,7 @@ extends Node2D
 const SOUND_LASER       = "laser1"
 const SOUND_JUMP        = "jump_00"
 const SOUND_FIRENOAMMO  = "hit_01"
-const SOUND_PICKUP_AMMO = "shoot_02"
+const SOUND_PICKUP_AMMO = "freesound_150220_killkhan_reload_trimmed"
 
 export var move_force = Vector2(150, 0)
 export var max_horizontal_velocity = 200

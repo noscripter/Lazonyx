@@ -1,8 +1,9 @@
 extends Node
 
-const SOUND_SCORE_POINT  = "collect_point_00"
-const SOUND_HIT_BY_ENEMY = "hit_03"
-const MUSIC_BACKGROUND   = "lazonyx_idea_2_v2"
+const SOUND_SCORE_POINT        = "collect_point_01"
+const SOUND_ENEMY_BECOMES_COIN = "collect_point_00"
+const SOUND_HIT_BY_ENEMY       = "hit_03"
+const MUSIC_BACKGROUND         = "lazonyx_idea_2_v2"
 
 #game
 var ammo_per_pickup = 10
@@ -150,6 +151,8 @@ func spawn_orb(position,velocity):
 	add_child(new_orb)
 	
 func player_hit_enemy(enemy):
+	var voice_id = sample_player.play(SOUND_ENEMY_BECOMES_COIN)
+	sample_player.set_volume(voice_id, sound_volume)
 	enemy.die()
 	
 func player_touched_ammo_pickup(player_that_touched, ammo_pickup):
@@ -184,6 +187,9 @@ func _enemy_entered_goal(enemy):
 	
 func _player_entered_goal(player):
 	deduct_life()
+	var voice_id = sample_player.play(SOUND_HIT_BY_ENEMY)
+	sample_player.set_volume(voice_id, sound_volume)
+	player.anim.play("player_hit_animation")
 	reset_player_position()
 	
 func reset_player_position():
@@ -225,6 +231,7 @@ func enemy_hit_player(enemy_body):
 	var voice_id = sample_player.play(SOUND_HIT_BY_ENEMY)
 	sample_player.set_volume(voice_id, sound_volume)
 	enemy_body.get_parent().explode()
+	player.anim.play("player_hit_animation")
 	deduct_life()
 		
 
