@@ -12,6 +12,7 @@ var direction = 1
 
 signal entered_goal
 
+#delete this comment
 func _ready():
 	body.set_pos(Vector2(0,0))
 	body.connect("body_enter", self, "_body_enter")
