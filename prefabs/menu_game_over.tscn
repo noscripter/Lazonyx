@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/menu_game_over.gd" type="Script" id=1]
-[ext_resource path="res://textures/UI/game_over_menu_bg.png" type="Texture" id=2]
-[ext_resource path="res://textures/UI/btn_main_menu.png" type="Texture" id=3]
+[ext_resource path="res://textures/ui/game_over_menu_bg.png" type="Texture" id=2]
+[ext_resource path="res://textures/ui/btn_main_menu.png" type="Texture" id=3]
 [ext_resource path="res://textures/black16x16.png" type="Texture" id=4]
 [ext_resource path="res://fonts/slkscr.ttf" type="DynamicFontData" id=5]
 

@@ -16,6 +16,7 @@ func load_level(LEVEL):
 		get_tree().change_scene(LEVEL)
 	else:
 		print(LEVEL + " is not a valid file")
+		get_tree().change_scene(LEVEL)
 		
 func add_to_current_scene(object):
 	get_tree().get_root().add_child(object)
