@@ -40,8 +40,6 @@ var time_to_spawn_enemy = 1.0
 var number_of_enemies = 0
 var current_score   = 0
 var top_score       = 0
-# array of objects for laser to ignore
-var laser_ignore_objects = [player]
 var music_voice_id
 
 
@@ -142,7 +140,6 @@ func spawn_ammo_pickup():
 	var pickup_spawn_location = ammo_pickup_spawner.get_random_location()
 	var new_ammo_pickup = file_manager.AMMO_PICKUP_PREFAB.instance()
 	new_ammo_pickup.set_global_pos(pickup_spawn_location)
-	laser_ignore_objects.append(new_ammo_pickup)
 	add_child(new_ammo_pickup)
 	
 func spawn_orb(position,velocity):
@@ -150,7 +147,6 @@ func spawn_orb(position,velocity):
 	new_orb.set_pos(position)
 	new_orb.set_linear_velocity(velocity)
 	new_orb.connect("entered_goal", self, "_orb_entered_goal")
-	laser_ignore_objects.append(new_orb)
 	add_child(new_orb)
 	
 func player_hit_enemy(enemy):
@@ -179,8 +175,6 @@ func _orb_entered_goal(orb, goal):
 		hud.set_current_score(current_score)
 		hud.set_level(current_level)
 		
-	# remove this orb from the laser ignore array
-	laser_ignore_objects.remove(laser_ignore_objects.find(orb))
 	# remove orb from scene
 	orb.queue_free()
 	

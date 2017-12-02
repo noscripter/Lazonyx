@@ -50,7 +50,7 @@ func shoot():
 	raytrace_end_point *= (LASER_MAX_LENGTH / raytrace_length)
 	raytrace_end_point = body.get_global_pos() + raytrace_end_point
 	var laser_end_point = raytrace_end_point
-	var result = space_state.intersect_ray( body.get_global_pos(), raytrace_end_point, get_parent().laser_ignore_objects)
+	var result = space_state.intersect_ray( body.get_global_pos(), raytrace_end_point)
 	# deal with left and right movement
 	if (not result.empty()):
 		
